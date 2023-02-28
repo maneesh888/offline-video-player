@@ -16,6 +16,7 @@
 		9F21227329AD0390002F8F06 /* Offline_Video_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21227229AD0390002F8F06 /* Offline_Video_PlayerUITests.swift */; };
 		9F21227529AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */; };
 		9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21228129AD0BC0002F8F06 /* VideoListView.swift */; };
+		9F21228629ADDD24002F8F06 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21228529ADDD24002F8F06 /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9F21227229AD0390002F8F06 /* Offline_Video_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offline_Video_PlayerUITests.swift; sourceTree = "<group>"; };
 		9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offline_Video_PlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9F21228129AD0BC0002F8F06 /* VideoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListView.swift; sourceTree = "<group>"; };
+		9F21228529ADDD24002F8F06 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +101,11 @@
 		9F21225129AD038D002F8F06 /* Offline Video Player */ = {
 			isa = PBXGroup;
 			children = (
+				9F21228C29ADE88F002F8F06 /* New Group */,
+				9F21228429ADDD17002F8F06 /* Utils */,
 				9F21228329AD1179002F8F06 /* Views */,
 				9F21225229AD038D002F8F06 /* Offline_Video_PlayerApp.swift */,
 				9F21225429AD038D002F8F06 /* ContentView.swift */,
-				9F21228129AD0BC0002F8F06 /* VideoListView.swift */,
 				9F21225629AD038F002F8F06 /* Assets.xcassets */,
 				9F21225B29AD0390002F8F06 /* Persistence.swift */,
 				9F21225D29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld */,
@@ -139,8 +142,24 @@
 		9F21228329AD1179002F8F06 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F21228129AD0BC0002F8F06 /* VideoListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9F21228429ADDD17002F8F06 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9F21228529ADDD24002F8F06 /* Strings.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9F21228C29ADE88F002F8F06 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +294,7 @@
 			files = (
 				9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */,
 				9F21225C29AD0390002F8F06 /* Persistence.swift in Sources */,
+				9F21228629ADDD24002F8F06 /* Strings.swift in Sources */,
 				9F21225F29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld in Sources */,
 				9F21225329AD038D002F8F06 /* Offline_Video_PlayerApp.swift in Sources */,
 			);
