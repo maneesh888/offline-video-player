@@ -30,6 +30,7 @@
 		9F487DC429AE451E009F38BE /* DownloadButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DC329AE451E009F38BE /* DownloadButtonView.swift */; };
 		9F487DCE29AE6042009F38BE /* UICircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */; };
 		9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */; };
+		9F487DD229AE7246009F38BE /* VideoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		9F487DC329AE451E009F38BE /* DownloadButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonView.swift; sourceTree = "<group>"; };
 		9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressView.swift; sourceTree = "<group>"; };
 		9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressButton.swift; sourceTree = "<group>"; };
+		9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			children = (
 				9F487DB929AE3887009F38BE /* VideoDetailsViewController.swift */,
 				9F487DBA29AE3887009F38BE /* VideoDetailsViewController.xib */,
+				9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */,
 			);
 			path = DetailsView;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				9F21228629ADDD24002F8F06 /* Strings.swift in Sources */,
 				9F487DCE29AE6042009F38BE /* UICircleProgressView.swift in Sources */,
 				9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */,
+				9F487DD229AE7246009F38BE /* VideoDetailsViewModel.swift in Sources */,
 				9F21225F29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld in Sources */,
 				9F21225329AD038D002F8F06 /* Offline_Video_PlayerApp.swift in Sources */,
 			);

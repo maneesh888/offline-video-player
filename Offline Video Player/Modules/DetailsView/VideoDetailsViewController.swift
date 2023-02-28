@@ -10,7 +10,13 @@ import UIKit
 
 class VideoDetailsViewController: UIViewController {
 
+    var viewModel: VideoDetailsViewModel!
+    
     private let downloadProgressView = DownloadButtonView(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+    
+    @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var buttonPlayNext: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +27,15 @@ class VideoDetailsViewController: UIViewController {
             self.downloadProgressView.setButtonEnabled(true)
             self.downloadProgressView.setButtonAction(self, action: #selector(self.downloadButtonTapped))
             self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.downloadProgressView)
+            self.buttonPlayNext.contentHorizontalAlignment = .right
+            self.decorate()
         }
+        
+    }
+    
+    func decorate() {
+        labelTitle.text = viewModel.selectedLesson.name
+        labelDescription.text = viewModel.selectedLesson.description
     }
     
     @objc private func downloadButtonTapped() {

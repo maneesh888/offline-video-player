@@ -19,7 +19,7 @@ struct VideoListView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(spacing: 20) {
                         ForEach(viewModel.lessons) { lesson in
-                            NavigationLink(destination: VideoDetailView()) {
+                            NavigationLink(destination: VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: lesson))) {
                                 HStack {
                                     Text(lesson.name)
                                         .font(.headline)
@@ -43,10 +43,14 @@ struct VideoListView: View {
 struct VideoDetailView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = VideoDetailsViewController
+    var viewModel:VideoDetailsViewModel
+    init(viewModel:VideoDetailsViewModel) {
+        self.viewModel = viewModel
+    }
     
     func makeUIViewController(context: Context) -> VideoDetailsViewController {
         let vc = VideoDetailsViewController(nibName: "VideoDetailsViewController", bundle: nil)
-       // vc.viewModel = VideoDetailsViewController()
+        vc.viewModel = viewModel
         return vc
     }
     
