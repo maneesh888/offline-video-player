@@ -17,6 +17,13 @@
 		9F21227529AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */; };
 		9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21228129AD0BC0002F8F06 /* VideoListView.swift */; };
 		9F21228629ADDD24002F8F06 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21228529ADDD24002F8F06 /* Strings.swift */; };
+		9F21228E29ADE990002F8F06 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21228D29ADE990002F8F06 /* NetworkService.swift */; };
+		9F21229329ADEFBB002F8F06 /* VideoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21229229ADEFBB002F8F06 /* VideoListViewModel.swift */; };
+		9F21229629AE00B8002F8F06 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21229529AE00B8002F8F06 /* Lesson.swift */; };
+		9F487DB129AE1960009F38BE /* mockLessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F21228F29ADEB3A002F8F06 /* mockLessons.json */; };
+		9F487DB229AE1962009F38BE /* mockLessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F21228F29ADEB3A002F8F06 /* mockLessons.json */; };
+		9F487DB329AE1963009F38BE /* mockLessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F21228F29ADEB3A002F8F06 /* mockLessons.json */; };
+		9F487DB529AE1C2A009F38BE /* LessonListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DB429AE1C2A009F38BE /* LessonListRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +58,11 @@
 		9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offline_Video_PlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9F21228129AD0BC0002F8F06 /* VideoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListView.swift; sourceTree = "<group>"; };
 		9F21228529ADDD24002F8F06 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		9F21228D29ADE990002F8F06 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		9F21228F29ADEB3A002F8F06 /* mockLessons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockLessons.json; sourceTree = "<group>"; };
+		9F21229229ADEFBB002F8F06 /* VideoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModel.swift; sourceTree = "<group>"; };
+		9F21229529AE00B8002F8F06 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		9F487DB429AE1C2A009F38BE /* LessonListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +113,9 @@
 		9F21225129AD038D002F8F06 /* Offline Video Player */ = {
 			isa = PBXGroup;
 			children = (
-				9F21228C29ADE88F002F8F06 /* New Group */,
+				9F21228C29ADE88F002F8F06 /* Networking */,
 				9F21228429ADDD17002F8F06 /* Utils */,
-				9F21228329AD1179002F8F06 /* Views */,
+				9F21228329AD1179002F8F06 /* Modules */,
 				9F21225229AD038D002F8F06 /* Offline_Video_PlayerApp.swift */,
 				9F21225429AD038D002F8F06 /* ContentView.swift */,
 				9F21225629AD038F002F8F06 /* Assets.xcassets */,
@@ -139,12 +151,12 @@
 			path = "Offline Video PlayerUITests";
 			sourceTree = "<group>";
 		};
-		9F21228329AD1179002F8F06 /* Views */ = {
+		9F21228329AD1179002F8F06 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				9F21228129AD0BC0002F8F06 /* VideoListView.swift */,
+				9F21229129ADEFAA002F8F06 /* LessonsListView */,
 			);
-			path = Views;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		9F21228429ADDD17002F8F06 /* Utils */ = {
@@ -155,11 +167,32 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		9F21228C29ADE88F002F8F06 /* New Group */ = {
+		9F21228C29ADE88F002F8F06 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				9F21228D29ADE990002F8F06 /* NetworkService.swift */,
 			);
-			path = "New Group";
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9F21229129ADEFAA002F8F06 /* LessonsListView */ = {
+			isa = PBXGroup;
+			children = (
+				9F21228F29ADEB3A002F8F06 /* mockLessons.json */,
+				9F487DB429AE1C2A009F38BE /* LessonListRequest.swift */,
+				9F21229429AE00AD002F8F06 /* Model */,
+				9F21228129AD0BC0002F8F06 /* VideoListView.swift */,
+				9F21229229ADEFBB002F8F06 /* VideoListViewModel.swift */,
+			);
+			path = LessonsListView;
+			sourceTree = "<group>";
+		};
+		9F21229429AE00AD002F8F06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9F21229529AE00B8002F8F06 /* Lesson.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F21225A29AD038F002F8F06 /* Preview Assets.xcassets in Resources */,
+				9F487DB129AE1960009F38BE /* mockLessons.json in Resources */,
 				9F21225729AD038F002F8F06 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F487DB229AE1962009F38BE /* mockLessons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F487DB329AE1963009F38BE /* mockLessons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F21229629AE00B8002F8F06 /* Lesson.swift in Sources */,
+				9F21228E29ADE990002F8F06 /* NetworkService.swift in Sources */,
 				9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */,
+				9F21229329ADEFBB002F8F06 /* VideoListViewModel.swift in Sources */,
+				9F487DB529AE1C2A009F38BE /* LessonListRequest.swift in Sources */,
 				9F21225C29AD0390002F8F06 /* Persistence.swift in Sources */,
 				9F21228629ADDD24002F8F06 /* Strings.swift in Sources */,
 				9F21225F29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld in Sources */,
