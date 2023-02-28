@@ -27,6 +27,9 @@
 		9F487DB829AE3796009F38BE /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DB729AE3796009F38BE /* ViewControllerFactory.swift */; };
 		9F487DBB29AE3887009F38BE /* VideoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DB929AE3887009F38BE /* VideoDetailsViewController.swift */; };
 		9F487DBC29AE3887009F38BE /* VideoDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F487DBA29AE3887009F38BE /* VideoDetailsViewController.xib */; };
+		9F487DC429AE451E009F38BE /* DownloadButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DC329AE451E009F38BE /* DownloadButtonView.swift */; };
+		9F487DCE29AE6042009F38BE /* UICircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */; };
+		9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		9F487DB729AE3796009F38BE /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		9F487DB929AE3887009F38BE /* VideoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsViewController.swift; sourceTree = "<group>"; };
 		9F487DBA29AE3887009F38BE /* VideoDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoDetailsViewController.xib; sourceTree = "<group>"; };
+		9F487DC329AE451E009F38BE /* DownloadButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonView.swift; sourceTree = "<group>"; };
+		9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressView.swift; sourceTree = "<group>"; };
+		9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,7 @@
 		9F21225129AD038D002F8F06 /* Offline Video Player */ = {
 			isa = PBXGroup;
 			children = (
+				9F487DBF29AE42CE009F38BE /* Components */,
 				9F21228C29ADE88F002F8F06 /* Networking */,
 				9F21228429ADDD17002F8F06 /* Utils */,
 				9F21228329AD1179002F8F06 /* Modules */,
@@ -212,6 +219,32 @@
 			path = DetailsView;
 			sourceTree = "<group>";
 		};
+		9F487DBF29AE42CE009F38BE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9F487DC929AE6042009F38BE /* UICircleProgressView */,
+				9F487DC329AE451E009F38BE /* DownloadButtonView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9F487DC929AE6042009F38BE /* UICircleProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				9F487DCA29AE6042009F38BE /* Classes */,
+			);
+			path = UICircleProgressView;
+			sourceTree = "<group>";
+		};
+		9F487DCA29AE6042009F38BE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */,
+				9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,6 +261,8 @@
 			dependencies = (
 			);
 			name = "Offline Video Player";
+			packageProductDependencies = (
+			);
 			productName = "Offline Video Player";
 			productReference = 9F21224F29AD038D002F8F06 /* Offline Video Player.app */;
 			productType = "com.apple.product-type.application";
@@ -300,6 +335,8 @@
 				Base,
 			);
 			mainGroup = 9F21224629AD038D002F8F06;
+			packageReferences = (
+			);
 			productRefGroup = 9F21225029AD038D002F8F06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,9 +389,12 @@
 				9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */,
 				9F487DBB29AE3887009F38BE /* VideoDetailsViewController.swift in Sources */,
 				9F21229329ADEFBB002F8F06 /* VideoListViewModel.swift in Sources */,
+				9F487DC429AE451E009F38BE /* DownloadButtonView.swift in Sources */,
 				9F487DB529AE1C2A009F38BE /* LessonListRequest.swift in Sources */,
 				9F21225C29AD0390002F8F06 /* Persistence.swift in Sources */,
 				9F21228629ADDD24002F8F06 /* Strings.swift in Sources */,
+				9F487DCE29AE6042009F38BE /* UICircleProgressView.swift in Sources */,
+				9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */,
 				9F21225F29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld in Sources */,
 				9F21225329AD038D002F8F06 /* Offline_Video_PlayerApp.swift in Sources */,
 			);
