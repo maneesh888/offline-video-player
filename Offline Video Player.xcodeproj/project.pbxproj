@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9F21225329AD038D002F8F06 /* Offline_Video_PlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21225229AD038D002F8F06 /* Offline_Video_PlayerApp.swift */; };
-		9F21225529AD038D002F8F06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21225429AD038D002F8F06 /* ContentView.swift */; };
 		9F21225729AD038F002F8F06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F21225629AD038F002F8F06 /* Assets.xcassets */; };
 		9F21225A29AD038F002F8F06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F21225929AD038F002F8F06 /* Preview Assets.xcassets */; };
 		9F21225C29AD0390002F8F06 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21225B29AD0390002F8F06 /* Persistence.swift */; };
@@ -16,6 +15,7 @@
 		9F21226929AD0390002F8F06 /* Offline_Video_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21226829AD0390002F8F06 /* Offline_Video_PlayerTests.swift */; };
 		9F21227329AD0390002F8F06 /* Offline_Video_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21227229AD0390002F8F06 /* Offline_Video_PlayerUITests.swift */; };
 		9F21227529AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */; };
+		9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21228129AD0BC0002F8F06 /* VideoListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +48,7 @@
 		9F21226E29AD0390002F8F06 /* Offline Video PlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Offline Video PlayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F21227229AD0390002F8F06 /* Offline_Video_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offline_Video_PlayerUITests.swift; sourceTree = "<group>"; };
 		9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offline_Video_PlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9F21228129AD0BC0002F8F06 /* VideoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +99,10 @@
 		9F21225129AD038D002F8F06 /* Offline Video Player */ = {
 			isa = PBXGroup;
 			children = (
+				9F21228329AD1179002F8F06 /* Views */,
 				9F21225229AD038D002F8F06 /* Offline_Video_PlayerApp.swift */,
 				9F21225429AD038D002F8F06 /* ContentView.swift */,
+				9F21228129AD0BC0002F8F06 /* VideoListView.swift */,
 				9F21225629AD038F002F8F06 /* Assets.xcassets */,
 				9F21225B29AD0390002F8F06 /* Persistence.swift */,
 				9F21225D29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld */,
@@ -131,6 +134,13 @@
 				9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */,
 			);
 			path = "Offline Video PlayerUITests";
+			sourceTree = "<group>";
+		};
+		9F21228329AD1179002F8F06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */,
 				9F21225C29AD0390002F8F06 /* Persistence.swift in Sources */,
-				9F21225529AD038D002F8F06 /* ContentView.swift in Sources */,
 				9F21225F29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld in Sources */,
 				9F21225329AD038D002F8F06 /* Offline_Video_PlayerApp.swift in Sources */,
 			);
@@ -432,6 +442,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,6 +471,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

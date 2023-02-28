@@ -13,8 +13,8 @@ struct Offline_Video_PlayerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            VideoListView()
+               // .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
