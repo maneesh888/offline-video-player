@@ -68,40 +68,21 @@ struct VideoListView: View {
     }
 }
 
-struct Item: Identifiable {
-    let id = UUID()
-    let imageName: String
-    let title: String
-}
-
-let items = [
-    Item(imageName: "photo1", title: "Item 1"),
-    Item(imageName: "photo2", title: "Item 2"),
-    Item(imageName: "photo3", title: "Item 3")
-]
 
 struct DetailView: UIViewControllerRepresentable {
     
-    typealias UIViewControllerType = DetailViewController
+    typealias UIViewControllerType = VideoDetailsViewController
     
-    func makeUIViewController(context: Context) -> DetailViewController {
-        let vc = DetailViewController()
-        // Do some configurations here if needed.
+    func makeUIViewController(context: Context) -> VideoDetailsViewController {
+        let vc = VideoDetailsViewController(nibName: "VideoDetailsViewController", bundle: nil)
+       // vc.viewModel = VideoDetailsViewController()
         return vc
     }
     
-    func updateUIViewController(_ uiViewController: DetailViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: VideoDetailsViewController, context: Context) {
         // Updates the state of the specified view controller with new information from SwiftUI.
     }
     
-}
-
-class DetailViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .blue
-        title = "UIKit View"
-    }
 }
 
 

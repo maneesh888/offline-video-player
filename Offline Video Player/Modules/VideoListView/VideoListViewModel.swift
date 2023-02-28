@@ -68,7 +68,7 @@ final class VideoListViewModel: ObservableObject {
     
     
     private func fetchPosts() -> AnyPublisher<LessonsServerModel, Error> {
-       return networkService.fetch(.lessons)
+       return networkService.fetch(LessonListRequest.lessons)
 //            .sink(
 //                receiveCompletion: { [weak self] completion in
 //                    if case let .failure(error) = completion {
