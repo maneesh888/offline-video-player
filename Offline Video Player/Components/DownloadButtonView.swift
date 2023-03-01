@@ -35,6 +35,7 @@ class DownloadButtonView: UIButton {
         progressButtonButton.strokeDynamic = true
         progressButtonButton.tintColor = .systemBlue
         progressButtonButton.colorCanceled = .systemBlue
+        progressButtonButton.isUserInteractionEnabled = false
         
         
         addSubview(progressButtonButton)

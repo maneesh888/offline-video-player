@@ -8,11 +8,13 @@
 import UIKit
 import SDWebImage
 import AVKit
+import Combine
 
 
 class VideoDetailsViewController: UIViewController {
 
     var viewModel: VideoDetailsViewModel!
+    private var cancellables: Set<AnyCancellable> = []
     
     @IBOutlet weak var containerView: UIView!
     private let downloadProgressView = DownloadButtonView(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
@@ -153,6 +155,9 @@ class VideoDetailsViewController: UIViewController {
     }
     
     @objc private func downloadButtonTapped() {
+        
+        viewModel.downloadSelectedVideo()
+        
 //        // Start downloading
 //        downloadProgressView.setProgress(0)
 //        downloadProgressView.setButtonEnabled(false)

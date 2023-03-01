@@ -36,6 +36,7 @@
 		9FA3D2EB29AF3AB50027B836 /* LessonPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */; };
 		9FA3D2ED29AF3D510027B836 /* LessonPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */; };
 		9FA3D2EF29AF63E70027B836 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EE29AF63E70027B836 /* UIViewControllerExtension.swift */; };
+		9FA3D2F129AF8F470027B836 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2F029AF8F470027B836 /* DownloadService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonPlayerViewController.xib; sourceTree = "<group>"; };
 		9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewModel.swift; sourceTree = "<group>"; };
 		9FA3D2EE29AF63E70027B836 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		9FA3D2F029AF8F470027B836 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				9F487DB729AE3796009F38BE /* ViewControllerFactory.swift */,
 				9F21228529ADDD24002F8F06 /* Strings.swift */,
 				9FA3D2EE29AF63E70027B836 /* UIViewControllerExtension.swift */,
+				9FA3D2F029AF8F470027B836 /* DownloadService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				9FA3D2EF29AF63E70027B836 /* UIViewControllerExtension.swift in Sources */,
 				9F21228E29ADE990002F8F06 /* NetworkService.swift in Sources */,
 				9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */,
+				9FA3D2F129AF8F470027B836 /* DownloadService.swift in Sources */,
 				9F487DBB29AE3887009F38BE /* VideoDetailsViewController.swift in Sources */,
 				9F21229329ADEFBB002F8F06 /* VideoListViewModel.swift in Sources */,
 				9FA3D2EA29AF3AB50027B836 /* LessonPlayerViewController.swift in Sources */,
