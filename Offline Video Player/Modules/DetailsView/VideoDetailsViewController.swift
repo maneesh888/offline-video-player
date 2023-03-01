@@ -69,11 +69,11 @@ class VideoDetailsViewController: UIViewController {
             isFullScreen = true
             let fullScreenVC = AVPlayerViewController()
             fullScreenVC.player = player
-            present(fullScreenVC, animated: true, completion: nil)
+            present(fullScreenVC, animated: false, completion: nil)
         } else if UIDevice.current.orientation.isPortrait && isFullScreen {
             // Exit full screen mode
             isFullScreen = false
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: false, completion: nil)
         }
     }
     
