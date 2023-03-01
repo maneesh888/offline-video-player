@@ -18,20 +18,8 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Landscape or portrait?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlp-lr-NMb">
-                    <rect key="frame" x="110.33333333333333" y="415.66666666666669" width="172.33333333333337" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="dlp-lr-NMb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Iun-al-zoL"/>
-                <constraint firstItem="dlp-lr-NMb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wqA-JG-5tH"/>
-            </constraints>
             <point key="canvasLocation" x="-153" y="-13"/>
         </view>
     </objects>

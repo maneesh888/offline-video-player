@@ -40,16 +40,12 @@ class LessonPlayerViewController: UIViewController {
         super.viewDidAppear(animated)
         
     }
-//   private func setupBinding() {
-//        viewModel.$assetPath
-//            .receive(on: DispatchQueue.main)
-//            .sink { [weak self] urlString in
-//                guard let self = self else {return}
-//                guard let videoURL = URL(string: urlString ?? "") else {return}
-//                self.loadVideoWithURL(videoURL)
-//            }
-//            .store(in: &subscriptions)
-//    }
+
+    func stopPlayBack() {
+        self.avplayerItem = nil
+        self.player?.replaceCurrentItem(with: nil)
+        self.playerViewController = nil
+    }
     
     private  func setupPlayerView(){
         guard self.playerLayer == nil else {return}

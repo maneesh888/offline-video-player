@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoDetailsViewController" customModule="Offline_Video_Player" customModuleProvider="target">
             <connections>
                 <outlet property="buttonPlayNext" destination="3ZU-BO-NmB" id="NvC-JO-mm9"/>
+                <outlet property="containerView" destination="bYL-QD-Rga" id="iEO-57-HXt"/>
                 <outlet property="labelDescription" destination="nnR-98-Q08" id="fUY-Bw-4PF"/>
                 <outlet property="labelTitle" destination="1kH-HT-1fV" id="HBu-7w-pdf"/>
                 <outlet property="playButton" destination="9SJ-ob-6jN" id="PC6-bv-ITG"/>
@@ -24,12 +25,24 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMa-py-1ik">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYL-QD-Rga">
                     <rect key="frame" x="0.0" y="59" width="393" height="220"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMa-py-1ik">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="220"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="nMa-py-1ik" secondAttribute="height" multiplier="393:220" id="sld-93-Tau"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="nMa-py-1ik" secondAttribute="height" multiplier="393:220" id="sld-93-Tau"/>
+                        <constraint firstItem="nMa-py-1ik" firstAttribute="top" secondItem="bYL-QD-Rga" secondAttribute="top" id="UAH-SA-lp7"/>
+                        <constraint firstItem="nMa-py-1ik" firstAttribute="leading" secondItem="bYL-QD-Rga" secondAttribute="leading" id="eyc-1c-Ufr"/>
+                        <constraint firstItem="nMa-py-1ik" firstAttribute="height" secondItem="bYL-QD-Rga" secondAttribute="height" id="uYm-3G-wcf"/>
+                        <constraint firstAttribute="trailing" secondItem="nMa-py-1ik" secondAttribute="trailing" id="yaa-tw-9SL"/>
                     </constraints>
-                </imageView>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kH-HT-1fV">
                     <rect key="frame" x="16" y="295" width="361" height="27.666666666666686"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
@@ -70,19 +83,19 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1kH-HT-1fV" secondAttribute="trailing" constant="16" id="2UH-r1-QbE"/>
+                <constraint firstItem="1kH-HT-1fV" firstAttribute="top" secondItem="bYL-QD-Rga" secondAttribute="bottom" constant="16" id="6oZ-rW-Afl"/>
                 <constraint firstItem="nnR-98-Q08" firstAttribute="top" secondItem="1kH-HT-1fV" secondAttribute="bottom" constant="16" id="7QD-De-oam"/>
-                <constraint firstItem="9SJ-ob-6jN" firstAttribute="centerY" secondItem="nMa-py-1ik" secondAttribute="centerY" id="9WU-Zn-hBV"/>
                 <constraint firstItem="1kH-HT-1fV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="9kh-2N-oQR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3ZU-BO-NmB" secondAttribute="bottom" constant="16" id="BHt-FV-o7z"/>
-                <constraint firstItem="nMa-py-1ik" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Cp4-sA-s14"/>
+                <constraint firstItem="9SJ-ob-6jN" firstAttribute="centerX" secondItem="bYL-QD-Rga" secondAttribute="centerX" id="E4q-MO-kEf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nnR-98-Q08" secondAttribute="trailing" constant="16" id="E9g-lo-VHM"/>
+                <constraint firstItem="bYL-QD-Rga" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="KHi-Zu-vCs"/>
                 <constraint firstItem="nnR-98-Q08" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="PXx-4e-wca"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nMa-py-1ik" secondAttribute="trailing" id="R3D-zb-F96"/>
-                <constraint firstItem="1kH-HT-1fV" firstAttribute="top" secondItem="nMa-py-1ik" secondAttribute="bottom" constant="16" id="SbV-qf-Qra"/>
-                <constraint firstItem="nMa-py-1ik" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hBD-L7-czF"/>
+                <constraint firstItem="9SJ-ob-6jN" firstAttribute="centerY" secondItem="bYL-QD-Rga" secondAttribute="centerY" id="YHj-lr-mQw"/>
                 <constraint firstItem="3ZU-BO-NmB" firstAttribute="top" secondItem="nnR-98-Q08" secondAttribute="bottom" constant="16" id="hTc-V5-Xut"/>
-                <constraint firstItem="9SJ-ob-6jN" firstAttribute="centerX" secondItem="nMa-py-1ik" secondAttribute="centerX" id="hhE-bR-7JP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3ZU-BO-NmB" secondAttribute="trailing" constant="16" id="qIH-ew-g2U"/>
+                <constraint firstItem="bYL-QD-Rga" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rFS-wn-dCF"/>
+                <constraint firstItem="bYL-QD-Rga" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yEC-oD-FWG"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
