@@ -61,8 +61,8 @@ struct VideoDetailView: UIViewControllerRepresentable {
 }
 
 
-struct VideoListView_Previews: PreviewProvider {
-    static var previews: some View {
-        VideoListView()
-    }
-}
+//struct VideoListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VideoListView()
+//    }
+//}

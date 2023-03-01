@@ -47,28 +47,30 @@ class VideoDetailsViewController: UIViewController {
     }
     
     @objc private func downloadButtonTapped() {
-        // Start downloading
-        downloadProgressView.setProgress(0)
-        downloadProgressView.setButtonEnabled(false)
-        downloadProgressView.setStatus(.waiting)
-
-        // Simulate progress update
-        var progress: Float = 0
-        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            progress += 0.1
-            if progress >= 1 {
-                timer.invalidate()
-                self.downloadProgressView.setButtonEnabled(true)
-                self.downloadProgressView.setStatus(.success)
-            } else {
-                self.downloadProgressView.setStatus(.downloading)
-                self.downloadProgressView.setProgress(progress)
-            }
-        }
-        timer.fire()
+//        // Start downloading
+//        downloadProgressView.setProgress(0)
+//        downloadProgressView.setButtonEnabled(false)
+//        downloadProgressView.setStatus(.waiting)
+//
+//        // Simulate progress update
+//        var progress: Float = 0
+//        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+//            progress += 0.1
+//            if progress >= 1 {
+//                timer.invalidate()
+//                self.downloadProgressView.setButtonEnabled(true)
+//                self.downloadProgressView.setStatus(.success)
+//            } else {
+//                self.downloadProgressView.setStatus(.downloading)
+//                self.downloadProgressView.setProgress(progress)
+//            }
+//        }
+//        timer.fire()
     }
     @IBAction func didTapPlay(_ sender: Any) {
-        
+        let playerVC = ViewControllerFactory.getLessonPlayer(lesson: viewModel.selectedLesson)
+        playerVC.modalPresentationStyle = .fullScreen
+        present(playerVC, animated: true)
     }
     
 }

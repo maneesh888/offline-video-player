@@ -13,5 +13,11 @@ struct ViewControllerFactory {
        // vc.viewModel = VideoDetailsViewController()
         return vc
     }
-
+    
+    
+    static func getLessonPlayer(lesson:Lesson)-> LessonPlayerViewController {
+        let vc = LessonPlayerViewController(nibName: "LessonPlayerViewController", bundle: nil)
+        vc.viewModel = LessonPlayerViewModel(assetPath: lesson.videoURL)
+        return vc
+    }
 }

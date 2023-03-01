@@ -32,6 +32,9 @@
 		9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */; };
 		9F487DD229AE7246009F38BE /* VideoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */; };
 		9F487DD529AE8D85009F38BE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F487DD429AE8D85009F38BE /* SDWebImage */; };
+		9FA3D2EA29AF3AB50027B836 /* LessonPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2E829AF3AB50027B836 /* LessonPlayerViewController.swift */; };
+		9FA3D2EB29AF3AB50027B836 /* LessonPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */; };
+		9FA3D2ED29AF3D510027B836 /* LessonPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,9 @@
 		9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressView.swift; sourceTree = "<group>"; };
 		9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressButton.swift; sourceTree = "<group>"; };
 		9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsViewModel.swift; sourceTree = "<group>"; };
+		9FA3D2E829AF3AB50027B836 /* LessonPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewController.swift; sourceTree = "<group>"; };
+		9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonPlayerViewController.xib; sourceTree = "<group>"; };
+		9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,7 @@
 		9F21228329AD1179002F8F06 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9FA3D2E729AF3A850027B836 /* LessonPlayerView */,
 				9F487DB629AE375D009F38BE /* DetailsView */,
 				9F21229129ADEFAA002F8F06 /* VideoListView */,
 			);
@@ -248,6 +255,16 @@
 				9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		9FA3D2E729AF3A850027B836 /* LessonPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				9FA3D2E829AF3AB50027B836 /* LessonPlayerViewController.swift */,
+				9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */,
+				9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */,
+			);
+			path = LessonPlayerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA3D2EB29AF3AB50027B836 /* LessonPlayerViewController.xib in Resources */,
 				9F21225A29AD038F002F8F06 /* Preview Assets.xcassets in Resources */,
 				9F487DB129AE1960009F38BE /* mockLessons.json in Resources */,
 				9F21225729AD038F002F8F06 /* Assets.xcassets in Resources */,
@@ -396,6 +414,8 @@
 				9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */,
 				9F487DBB29AE3887009F38BE /* VideoDetailsViewController.swift in Sources */,
 				9F21229329ADEFBB002F8F06 /* VideoListViewModel.swift in Sources */,
+				9FA3D2EA29AF3AB50027B836 /* LessonPlayerViewController.swift in Sources */,
+				9FA3D2ED29AF3D510027B836 /* LessonPlayerViewModel.swift in Sources */,
 				9F487DC429AE451E009F38BE /* DownloadButtonView.swift in Sources */,
 				9F487DB529AE1C2A009F38BE /* LessonListRequest.swift in Sources */,
 				9F21225C29AD0390002F8F06 /* Persistence.swift in Sources */,
@@ -568,8 +588,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -597,8 +617,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
