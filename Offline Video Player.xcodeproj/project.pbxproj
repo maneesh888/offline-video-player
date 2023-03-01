@@ -31,6 +31,7 @@
 		9F487DCE29AE6042009F38BE /* UICircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */; };
 		9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */; };
 		9F487DD229AE7246009F38BE /* VideoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */; };
+		9F487DD529AE8D85009F38BE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F487DD429AE8D85009F38BE /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F487DD529AE8D85009F38BE /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +267,7 @@
 			);
 			name = "Offline Video Player";
 			packageProductDependencies = (
+				9F487DD429AE8D85009F38BE /* SDWebImage */,
 			);
 			productName = "Offline Video Player";
 			productReference = 9F21224F29AD038D002F8F06 /* Offline Video Player.app */;
@@ -339,6 +342,7 @@
 			);
 			mainGroup = 9F21224629AD038D002F8F06;
 			packageReferences = (
+				9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 9F21225029AD038D002F8F06 /* Products */;
 			projectDirPath = "";
@@ -721,6 +725,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F487DD429AE8D85009F38BE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9F21225D29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld */ = {

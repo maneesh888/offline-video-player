@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 
 class VideoDetailsViewController: UIViewController {
@@ -16,8 +17,10 @@ class VideoDetailsViewController: UIViewController {
     
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var buttonPlayNext: UIButton!
     
+    @IBOutlet weak var playButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +31,7 @@ class VideoDetailsViewController: UIViewController {
             self.downloadProgressView.setButtonAction(self, action: #selector(self.downloadButtonTapped))
             self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.downloadProgressView)
             self.buttonPlayNext.contentHorizontalAlignment = .right
+            self.parent?.navigationItem.largeTitleDisplayMode = .never
             self.decorate()
         }
         
@@ -36,6 +40,10 @@ class VideoDetailsViewController: UIViewController {
     func decorate() {
         labelTitle.text = viewModel.selectedLesson.name
         labelDescription.text = viewModel.selectedLesson.description
+        if let imageURLString = viewModel.selectedLesson.thumbnail {
+            posterImageView.sd_setImage(with: URL(string: imageURLString))
+        }
+        playButton.imageView?.contentMode = .scaleAspectFit
     }
     
     @objc private func downloadButtonTapped() {
@@ -58,6 +66,9 @@ class VideoDetailsViewController: UIViewController {
             }
         }
         timer.fire()
+    }
+    @IBAction func didTapPlay(_ sender: Any) {
+        
     }
     
 }

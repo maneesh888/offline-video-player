@@ -14,6 +14,8 @@
                 <outlet property="buttonPlayNext" destination="3ZU-BO-NmB" id="NvC-JO-mm9"/>
                 <outlet property="labelDescription" destination="nnR-98-Q08" id="fUY-Bw-4PF"/>
                 <outlet property="labelTitle" destination="1kH-HT-1fV" id="HBu-7w-pdf"/>
+                <outlet property="playButton" destination="9SJ-ob-6jN" id="PC6-bv-ITG"/>
+                <outlet property="posterImageView" destination="nMa-py-1ik" id="30J-NU-gSW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,12 +52,26 @@
                         <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
                     </buttonConfiguration>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SJ-ob-6jN">
+                    <rect key="frame" x="166.66666666666666" y="139" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="cEX-qk-gb1"/>
+                        <constraint firstAttribute="width" constant="60" id="iMz-TC-aUD"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
+                    <connections>
+                        <action selector="didTapPlay:" destination="-1" eventType="touchUpInside" id="XND-Ow-TU1"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1kH-HT-1fV" secondAttribute="trailing" constant="16" id="2UH-r1-QbE"/>
                 <constraint firstItem="nnR-98-Q08" firstAttribute="top" secondItem="1kH-HT-1fV" secondAttribute="bottom" constant="16" id="7QD-De-oam"/>
+                <constraint firstItem="9SJ-ob-6jN" firstAttribute="centerY" secondItem="nMa-py-1ik" secondAttribute="centerY" id="9WU-Zn-hBV"/>
                 <constraint firstItem="1kH-HT-1fV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="9kh-2N-oQR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3ZU-BO-NmB" secondAttribute="bottom" constant="16" id="BHt-FV-o7z"/>
                 <constraint firstItem="nMa-py-1ik" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Cp4-sA-s14"/>
@@ -65,6 +81,7 @@
                 <constraint firstItem="1kH-HT-1fV" firstAttribute="top" secondItem="nMa-py-1ik" secondAttribute="bottom" constant="16" id="SbV-qf-Qra"/>
                 <constraint firstItem="nMa-py-1ik" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hBD-L7-czF"/>
                 <constraint firstItem="3ZU-BO-NmB" firstAttribute="top" secondItem="nnR-98-Q08" secondAttribute="bottom" constant="16" id="hTc-V5-Xut"/>
+                <constraint firstItem="9SJ-ob-6jN" firstAttribute="centerX" secondItem="nMa-py-1ik" secondAttribute="centerX" id="hhE-bR-7JP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3ZU-BO-NmB" secondAttribute="trailing" constant="16" id="qIH-ew-g2U"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
@@ -72,6 +89,7 @@
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

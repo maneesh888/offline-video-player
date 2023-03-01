@@ -21,7 +21,7 @@ struct VideoListView: View {
                         ForEach(viewModel.lessons) { lesson in
                             NavigationLink(destination: VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: lesson))) {
                                 HStack {
-                                    Text(lesson.name)
+                                    Text(lesson.name ?? "")
                                         .font(.headline)
                                     Spacer()
                                     Image(systemName: "chevron.right")
