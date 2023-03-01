@@ -24,9 +24,13 @@ class VideoDetailsViewController: UIViewController {
     
     @IBOutlet weak var playButton: UIButton!
     
-    private var player: AVPlayer!
-    private var playerLayer: AVPlayerLayer!
+    private var player: AVPlayer?
+    private var playerLayer: AVPlayerLayer?
+    private var playerItem: AVPlayerItem?
     private var isFullScreen = false
+    
+    private var isBuffering = true
+    private var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,28 +43,56 @@ class VideoDetailsViewController: UIViewController {
             self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.downloadProgressView)
             self.buttonPlayNext.contentHorizontalAlignment = .right
             self.parent?.navigationItem.largeTitleDisplayMode = .never
-            self.decorate()
+            
         }
-        // Register for device orientation changes
-        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+        self.decorate()
+        
     }
     
-    func decorate() {
+    private func decorate() {
+        
+        
+        
         labelTitle.text = viewModel.selectedLesson.name
         labelDescription.text = viewModel.selectedLesson.description
         if let imageURLString = viewModel.selectedLesson.thumbnail {
             posterImageView.sd_setImage(with: URL(string: imageURLString))
         }
         playButton.imageView?.contentMode = .scaleAspectFit
+        
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.hidesWhenStopped = true
+        containerView.addSubview(activityIndicator)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contentViewTapped))
+        containerView.addGestureRecognizer(tapGestureRecognizer)
     }
-    func setupPlayer() {
+    
+    private func registerNotifications() {
+        
+        // Register for device orientation changes
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        // Register for AVPlayerItem notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidPlayToEndTime), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemPlaybackStalled), name: .AVPlayerItemPlaybackStalled, object: playerItem)
+        
+        // Register for AVPlayer notifications
+                player?.addObserver(self, forKeyPath: "timeControlStatus", options: [.new], context: nil)
+    }
+    
+   private func setupPlayer() {
         player = AVPlayer()
         playerLayer = AVPlayerLayer(player: player)
-        containerView.layer.addSublayer(playerLayer)
+        containerView.layer.addSublayer(playerLayer!)
+        registerNotifications()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         playerLayer?.frame = containerView.bounds
+        activityIndicator.center = playButton.center
+        
     }
     
     @objc private func orientationDidChange() {
@@ -75,6 +107,49 @@ class VideoDetailsViewController: UIViewController {
             isFullScreen = false
             dismiss(animated: false, completion: nil)
         }
+    }
+    
+    @objc private func playerItemDidPlayToEndTime() {
+            // Reset the player and show the play button
+        player?.seek(to: .zero)
+            player?.pause()
+            playButton.isHidden = false
+            activityIndicator.stopAnimating()
+        }
+        
+        @objc private func playerItemPlaybackStalled() {
+            // Show the activity indicator and hide the play button
+            isBuffering = true
+            playButton.isHidden = true
+            activityIndicator.startAnimating()
+        }
+    
+        
+        override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+            // Detect changes to the AVPlayer's timeControlStatus property
+            if keyPath == "timeControlStatus", let status = player?.timeControlStatus {
+                if status == .playing && isBuffering {
+                    // The player has started playing after buffering
+                    isBuffering = false
+                    activityIndicator.stopAnimating()
+                    playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                }
+                
+                if status == .paused {
+                    playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                }
+                if status == .waitingToPlayAtSpecifiedRate {
+                    playButton.isHidden = true
+                }
+                //playButton.isHidden = !(status != .playing)
+            }
+            
+            
+        }
+    
+    @objc func contentViewTapped() {
+        // Do something when the view is tapped
+        playButton.isHidden = false
     }
     
     @objc private func downloadButtonTapped() {
@@ -100,14 +175,32 @@ class VideoDetailsViewController: UIViewController {
     }
     @IBAction func didTapPlay(_ sender: Any) {
         
+        if player?.timeControlStatus == .playing || player?.timeControlStatus == .waitingToPlayAtSpecifiedRate {
+            player?.pause()
+            playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            return
+        }
+        
+        if player?.timeControlStatus == .paused {
+            player?.play()
+            playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            return
+        }
+        
         let videoURL = URL(string: viewModel.selectedLesson.videoURL ?? "")
         setupPlayer()
         let playerItem = AVPlayerItem(url: videoURL!)
-        player.replaceCurrentItem(with: playerItem)
-        player.play()
+        self.playerItem = playerItem
+        player?.replaceCurrentItem(with: playerItem)
+        player?.play()
         posterImageView.isHidden = true
+        activityIndicator.startAnimating()
         
 
+    }
+    
+    deinit {
+        // Remove observers
     }
     
 }
