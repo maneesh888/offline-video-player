@@ -81,10 +81,12 @@ class DownloadButtonView: UIButton {
             statusLaabel.text = "Downloaded"
             statusLaabel.textColor = .green
             progressButtonButton.tintColor = .green
-            
+            return
         case .canceled:
             statusLaabel.text = "Download"
         }
+        statusLaabel.textColor = .systemBlue
+        progressButtonButton.tintColor = .systemBlue
     }
     
     func setButtonAction(_ target: Any?, action: Selector) {

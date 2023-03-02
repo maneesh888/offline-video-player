@@ -12,9 +12,12 @@ final class VideoDetailsViewModel {
     
     var lessons = [Lesson]()
     @Published var selectedLesson:Lesson
+    
+    var userInitiatedPlayback = false
     var currentIndex: Int? {
         return lessons.firstIndex(where: {$0.id == selectedLesson.id})
     }
+    
     var hideNextButton: Bool {
         if let currentIndex = currentIndex {
             return lessons.count == currentIndex+1

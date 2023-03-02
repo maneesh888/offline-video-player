@@ -68,6 +68,10 @@ class VideoDetailsViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contentViewTapped))
         containerView.addGestureRecognizer(tapGestureRecognizer)
         buttonPlayNext.isHidden = viewModel.hideNextButton
+        
+        if viewModel.userInitiatedPlayback {
+            self.startPlayback()
+        }
     }
     
     private func binding(){
@@ -77,6 +81,7 @@ class VideoDetailsViewController: UIViewController {
             .sink { [weak self] lesson in
                 // Update the UI with the new object
                 guard let self = self else {return}
+                self.stopPlayback()
                 self.decorate()
                 self.updateDownloadButton(state: self.viewModel.downloadState)
             }
@@ -96,7 +101,7 @@ class VideoDetailsViewController: UIViewController {
         switch state {
             
         case .notDownloaded:
-            return
+            self.downloadProgressView.setStatus(.canceled)
         case .waiting:
             self.downloadProgressView.setStatus(.waiting)
         case .downloading:
@@ -120,7 +125,18 @@ class VideoDetailsViewController: UIViewController {
                 player?.addObserver(self, forKeyPath: "timeControlStatus", options: [.new], context: nil)
     }
     
-    
+    private func startPlayback() {
+        guard let videoURL = viewModel.getURLForSelected() else {return}
+        
+        setupPlayer()
+        let playerItem = AVPlayerItem(url: videoURL)
+        self.playerItem = playerItem
+        player?.replaceCurrentItem(with: playerItem)
+        player?.play()
+        posterImageView.isHidden = true
+        activityIndicator.startAnimating()
+        viewModel.userInitiatedPlayback = true
+    }
     
    private func setupPlayer() {
         player = AVPlayer()
@@ -131,6 +147,7 @@ class VideoDetailsViewController: UIViewController {
     
     private func stopPlayback() {
         player?.replaceCurrentItem(with: nil)
+        posterImageView.isHidden = false
         cleanup()
     }
     
@@ -139,6 +156,12 @@ class VideoDetailsViewController: UIViewController {
         playerItem = nil
         NotificationCenter.default.removeObserver(self)
         player?.removeObserver(self, forKeyPath: "timeControlStatus")
+    }
+    
+    private func hidePlayButton() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.playButton.isHidden = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -193,7 +216,7 @@ class VideoDetailsViewController: UIViewController {
         @objc private func playerItemPlaybackStalled() {
             // Show the activity indicator and hide the play button
             isBuffering = true
-            playButton.isHidden = true
+            hidePlayButton()
             activityIndicator.startAnimating()
         }
     
@@ -212,7 +235,8 @@ class VideoDetailsViewController: UIViewController {
                     playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
                 }
                 if status == .waitingToPlayAtSpecifiedRate {
-                    playButton.isHidden = true
+                    // Hide the button after 3 seconds
+                    hidePlayButton()
                 }
                 //playButton.isHidden = !(status != .playing)
             }
@@ -223,6 +247,7 @@ class VideoDetailsViewController: UIViewController {
     @objc func contentViewTapped() {
         // Do something when the view is tapped
         playButton.isHidden = false
+        hidePlayButton()
     }
     
     @objc private func downloadButtonTapped() {
@@ -230,27 +255,24 @@ class VideoDetailsViewController: UIViewController {
     }
     
     @IBAction func didTapPlay(_ sender: Any) {
-        guard let videoURL = viewModel.getURLForSelected() else {return}
+        
+        
                 
         if player?.timeControlStatus == .playing || player?.timeControlStatus == .waitingToPlayAtSpecifiedRate {
             player?.pause()
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            viewModel.userInitiatedPlayback = false
             return
         }
         
         if player?.timeControlStatus == .paused {
             player?.play()
             playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            viewModel.userInitiatedPlayback = true
             return
         }
         
-        setupPlayer()
-        let playerItem = AVPlayerItem(url: videoURL)
-        self.playerItem = playerItem
-        player?.replaceCurrentItem(with: playerItem)
-        player?.play()
-        posterImageView.isHidden = true
-        activityIndicator.startAnimating()
+        startPlayback()
         
 
     }
