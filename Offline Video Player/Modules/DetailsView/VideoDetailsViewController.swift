@@ -37,22 +37,21 @@ class VideoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
-        
         DispatchQueue.main.async {
-            self.downloadProgressView.setButtonEnabled(true)
+            
+            self.updateDownloadButton(state: self.viewModel.downloadState)
             self.downloadProgressView.setButtonAction(self, action: #selector(self.downloadButtonTapped))
             self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.downloadProgressView)
             self.buttonPlayNext.contentHorizontalAlignment = .right
             self.parent?.navigationItem.largeTitleDisplayMode = .never
             
         }
-        self.decorate()
         
+        self.decorate()
+        self.binding()
     }
     
     private func decorate() {
-        
         
         
         labelTitle.text = viewModel.selectedLesson.name
@@ -68,9 +67,36 @@ class VideoDetailsViewController: UIViewController {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contentViewTapped))
         containerView.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
-    private func registerNotifications() {
+    private func binding(){
+        viewModel.downloadProgress
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] (progress, state) in
+                guard let self = self else { return }
+                self.updateDownloadButton(progress: progress, state: state)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func updateDownloadButton(progress:Double = 0.0,state: AssetDownloadState) {
+
+        switch state {
+            
+        case .notDownloaded:
+            return
+        case .waiting:
+            self.downloadProgressView.setStatus(.waiting)
+        case .downloading:
+            self.downloadProgressView.setStatus(.downloading)
+            self.downloadProgressView.setProgress(Float(progress))
+        case .downloaded:
+            self.downloadProgressView.setStatus(.success)
+        }
+    }
+    
+    private func addObservers() {
         
         // Register for device orientation changes
         NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -83,17 +109,51 @@ class VideoDetailsViewController: UIViewController {
                 player?.addObserver(self, forKeyPath: "timeControlStatus", options: [.new], context: nil)
     }
     
+    
+    
    private func setupPlayer() {
         player = AVPlayer()
         playerLayer = AVPlayerLayer(player: player)
         containerView.layer.addSublayer(playerLayer!)
-        registerNotifications()
+       addObservers()
     }
+    
+    private func stopPlayback() {
+        player?.replaceCurrentItem(with: nil)
+        cleanup()
+    }
+    
+    private func cleanup() {
+        player = nil
+        playerItem = nil
+        NotificationCenter.default.removeObserver(self)
+        player?.removeObserver(self, forKeyPath: "timeControlStatus")
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         playerLayer?.frame = containerView.bounds
         activityIndicator.center = playButton.center
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if playerItem != nil {
+            addObservers()
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if !isFullScreen {
+            stopPlayback()
+        }
+        
         
     }
     
@@ -155,31 +215,12 @@ class VideoDetailsViewController: UIViewController {
     }
     
     @objc private func downloadButtonTapped() {
-        
-        viewModel.downloadSelectedVideo()
-        
-//        // Start downloading
-//        downloadProgressView.setProgress(0)
-//        downloadProgressView.setButtonEnabled(false)
-//        downloadProgressView.setStatus(.waiting)
-//
-//        // Simulate progress update
-//        var progress: Float = 0
-//        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-//            progress += 0.1
-//            if progress >= 1 {
-//                timer.invalidate()
-//                self.downloadProgressView.setButtonEnabled(true)
-//                self.downloadProgressView.setStatus(.success)
-//            } else {
-//                self.downloadProgressView.setStatus(.downloading)
-//                self.downloadProgressView.setProgress(progress)
-//            }
-//        }
-//        timer.fire()
+        viewModel.downloadButtonAction()
     }
+    
     @IBAction func didTapPlay(_ sender: Any) {
-        
+        guard let videoURL = viewModel.getURLForSelected() else {return}
+                
         if player?.timeControlStatus == .playing || player?.timeControlStatus == .waitingToPlayAtSpecifiedRate {
             player?.pause()
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
@@ -192,9 +233,8 @@ class VideoDetailsViewController: UIViewController {
             return
         }
         
-        let videoURL = URL(string: viewModel.selectedLesson.videoURL ?? "")
         setupPlayer()
-        let playerItem = AVPlayerItem(url: videoURL!)
+        let playerItem = AVPlayerItem(url: videoURL)
         self.playerItem = playerItem
         player?.replaceCurrentItem(with: playerItem)
         player?.play()
@@ -206,6 +246,7 @@ class VideoDetailsViewController: UIViewController {
     
     deinit {
         // Remove observers
+        print("DEINIT \(self)")
     }
     
 }

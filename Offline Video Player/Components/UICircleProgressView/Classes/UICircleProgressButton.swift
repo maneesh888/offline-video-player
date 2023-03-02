@@ -163,6 +163,12 @@ public class UICircleProgressButton: UIButton
     {
         didSet { if self.hasInitFinished { self.updateStatus() } }
     }
+    
+    @IBInspectable
+    public var successImage: UIImage?
+    {
+        didSet { if self.hasInitFinished { self.updateStatus() } }
+    }
 
     public func setup()
     {
@@ -202,7 +208,10 @@ public class UICircleProgressButton: UIButton
             case .downloading, .waiting:
                 self.setImage(self.stopImage?.withRenderingMode(.alwaysTemplate), for: .normal)
             self.progressView.isHidden = false
-
+            
+        case .success:
+            self.setImage(self.successImage?.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.progressView.isHidden = true
             default:
                 self.setImage(nil, for: .normal)
         }

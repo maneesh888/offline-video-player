@@ -29,6 +29,10 @@ struct Lesson: Codable, Identifiable {
 }
 
 extension Lesson: Downloadable {
+    var assetId: String {
+        return "\(id)"
+    }
+    
     var assetURL: String? {
         return videoURL
     }

@@ -19,7 +19,10 @@ struct VideoListView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(spacing: 20) {
                         ForEach(viewModel.lessons) { lesson in
-                            NavigationLink(destination: VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: lesson))) {
+                            
+                            let detailsView = VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: lesson))
+                                
+                            NavigationLink(destination: detailsView) {
                                 HStack {
                                     Text(lesson.name ?? "")
                                         .font(.headline)
@@ -57,7 +60,9 @@ struct VideoDetailView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: VideoDetailsViewController, context: Context) {
         // Updates the state of the specified view controller with new information from SwiftUI.
     }
-    
+    static func dismantleUIViewController(_ uiViewController: VideoDetailsViewController, coordinator: ()) {
+        print("Dismantled \(self)")
+    }
 }
 
 

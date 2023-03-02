@@ -31,7 +31,7 @@ class DownloadButtonView: UIButton {
         progressButtonButton.status = .canceled
         progressButtonButton.style = .new
         progressButtonButton.startImage = UIImage(systemName: "icloud.and.arrow.down")
-        progressButtonButton.stopImage = UIImage(systemName: "stop.fill")
+        progressButtonButton.successImage = UIImage(systemName: "checkmark.circle.fill")
         progressButtonButton.strokeDynamic = true
         progressButtonButton.tintColor = .systemBlue
         progressButtonButton.colorCanceled = .systemBlue
@@ -69,6 +69,22 @@ class DownloadButtonView: UIButton {
     }
     func setStatus(_ status: UICircleProgressView.DownloadStatus) {
         progressButtonButton.status = status
+        switch status {
+            
+        case .paused:
+            break
+        case .waiting:
+            break
+        case .downloading:
+            statusLaabel.text = "Cancel Download"
+        case .success:
+            statusLaabel.text = "Downloaded"
+            statusLaabel.textColor = .green
+            progressButtonButton.tintColor = .green
+            
+        case .canceled:
+            statusLaabel.text = "Download"
+        }
     }
     
     func setButtonAction(_ target: Any?, action: Selector) {
