@@ -186,6 +186,7 @@ class VideoDetailsViewController: UIViewController {
         
         if !isFullScreen {
             stopPlayback()
+            viewModel = nil
         }
         
         

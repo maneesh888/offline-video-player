@@ -43,6 +43,7 @@ final class VideoListViewModel: ObservableObject {
                     self.isLoading = false
                 case .failure(let error):
                     self.isLoading = false
+                    self.error = error
                     print("Error: \(error.localizedDescription)")
                 }
             }) { [weak self] lessons in

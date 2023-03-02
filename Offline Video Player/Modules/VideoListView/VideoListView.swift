@@ -10,6 +10,12 @@ import SwiftUI
 struct VideoListView: View {
     
     @ObservedObject private var viewModel = VideoListViewModel(networkService: URLSessionNetworkService())
+    @State var navigate: Bool = false
+    @State var selectedLesson:Lesson?{
+        didSet{
+            navigate = selectedLesson != nil
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -20,9 +26,6 @@ struct VideoListView: View {
                     LazyVStack(spacing: 20) {
                         ForEach(viewModel.lessons) { lesson in
                             
-                            let detailsView = VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: lesson))
-                                
-                            NavigationLink(destination: detailsView) {
                                 HStack {
                                     Text(lesson.name ?? "")
                                         .font(.headline)
@@ -31,8 +34,14 @@ struct VideoListView: View {
                                         .foregroundColor(.gray)
                                     
                                 }
-                            }
+                                .onTapGesture {
+                                    selectedLesson = lesson
+                                }
                         }
+                        
+                    }
+                    if let selectedLesson = selectedLesson {
+                        NavigationLink("",destination:VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: selectedLesson)),isActive: $navigate).navigationViewStyle(StackNavigationViewStyle())
                     }
                 }
                 .navigationBarTitle(Text(StringConstants.videoListTitle))
@@ -46,10 +55,7 @@ struct VideoListView: View {
 struct VideoDetailView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = VideoDetailsViewController
-    var viewModel:VideoDetailsViewModel
-    init(viewModel:VideoDetailsViewModel) {
-        self.viewModel = viewModel
-    }
+    var viewModel:VideoDetailsViewModel!
     
     func makeUIViewController(context: Context) -> VideoDetailsViewController {
         let vc = VideoDetailsViewController(nibName: "VideoDetailsViewController", bundle: nil)
