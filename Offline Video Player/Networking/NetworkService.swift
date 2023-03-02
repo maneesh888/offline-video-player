@@ -18,6 +18,7 @@ protocol NetworkRequest {
     var path: String { get }
     var mockPath: String? { get }
     var url: URL { get }
+    var shouldStoreResponse: Bool { get }
 }
 extension NetworkRequest {
     var url: URL {
@@ -46,8 +47,15 @@ final class URLSessionNetworkService: NetworkService {
                 if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
                     throw NetworkError.statusCode(httpResponse.statusCode)
                 }
+                CacheManager.cacheResponse(data, for: url)
                 return data
-            }
+            }.catch({ error -> AnyPublisher<Data, Error> in
+                if let cachedData = CacheManager.getCachedResponse(for: url){
+                    return Just(cachedData).setFailureType(to: Error.self).eraseToAnyPublisher()
+                } else {
+                    return Fail(error: error).eraseToAnyPublisher()
+                }
+            })
             .decode(type: T.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
@@ -78,3 +86,23 @@ extension NetworkService {
 
 
 
+struct CacheManager {
+    private static let keyPrefix = "com.myapp.url_cache_"
+    static func getCachedResponse(for url: URL) -> Data? {
+        let key = Self.keyPrefix + url.absoluteString
+        return UserDefaults.standard.data(forKey: key)
+    }
+    
+    static func cacheResponse(_ data: Data, for url: URL) {
+        let key = Self.keyPrefix + url.absoluteString
+        UserDefaults.standard.set(data, forKey: key)
+    }
+    
+    static func clearCache() {
+        for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            if key.hasPrefix(Self.keyPrefix) {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+        }
+    }
+}

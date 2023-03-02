@@ -24,6 +24,11 @@ enum LessonListRequest: NetworkRequest {
         }
         
     }
-    
+    var shouldStoreResponse: Bool {
+        switch self {
+        case .lessons:
+            return true
+        }
+    }
     
 }
