@@ -14,7 +14,7 @@ struct VideoListView: View {
     var body: some View {
         NavigationView {
             if viewModel.isLoading {
-               // ActivityIndicator(isAnimating: .constant(true), style: .large)
+                ProgressView()
             }else{
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(spacing: 20) {

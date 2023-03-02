@@ -56,7 +56,7 @@ class DownloadButtonView: UIButton {
         NSLayoutConstraint.activate([
             statusLaabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             statusLaabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            statusLaabel.leadingAnchor.constraint(equalTo: progressButtonButton.trailingAnchor, constant: 10)
+            statusLaabel.leadingAnchor.constraint(equalTo: progressButtonButton.trailingAnchor, constant: 8)
         ])
     }
     
