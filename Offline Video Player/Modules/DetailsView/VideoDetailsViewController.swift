@@ -67,10 +67,21 @@ class VideoDetailsViewController: UIViewController {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contentViewTapped))
         containerView.addGestureRecognizer(tapGestureRecognizer)
-        
+        buttonPlayNext.isHidden = viewModel.hideNextButton
     }
     
     private func binding(){
+        
+        viewModel.$selectedLesson
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] lesson in
+                // Update the UI with the new object
+                guard let self = self else {return}
+                self.decorate()
+                self.updateDownloadButton(state: self.viewModel.downloadState)
+            }
+            .store(in: &cancellables)
+        
         viewModel.downloadProgress
             .receive(on: DispatchQueue.main)
             .sink { [weak self] (progress, state) in
@@ -242,6 +253,10 @@ class VideoDetailsViewController: UIViewController {
         activityIndicator.startAnimating()
         
 
+    }
+    
+    @IBAction func didTapNext(_ sender: Any) {
+        viewModel.chooseNextLesson()
     }
     
     deinit {

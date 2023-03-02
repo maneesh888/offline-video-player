@@ -11,7 +11,16 @@ import Combine
 final class VideoDetailsViewModel {
     
     var lessons = [Lesson]()
-    var selectedLesson:Lesson
+    @Published var selectedLesson:Lesson
+    var currentIndex: Int? {
+        return lessons.firstIndex(where: {$0.id == selectedLesson.id})
+    }
+    var hideNextButton: Bool {
+        if let currentIndex = currentIndex {
+            return lessons.count == currentIndex+1
+        }
+        return false
+    }
     
     var downloadState: AssetDownloadState {
         return downloadService.checkAssetDownloadStatus(asset: selectedLesson)
@@ -65,6 +74,12 @@ final class VideoDetailsViewModel {
             return url
         }else{
             return URL(string: selectedLesson.videoURL ?? "")
+        }
+    }
+    
+    func chooseNextLesson() {
+        if let currentIndex = currentIndex, lessons.count > currentIndex+1 {
+            selectedLesson = lessons[currentIndex+1]
         }
     }
     
