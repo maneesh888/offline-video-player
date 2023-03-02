@@ -30,11 +30,6 @@ final class VideoListViewModel: ObservableObject {
     private let networkService: NetworkService
     private var cancellable :AnyCancellable?
     
-//    init(networkService: NetworkService) {
-//        self.networkService = networkService
-//    }
-    
-    
     init(networkService: NetworkService) {
         self.networkService = networkService
         
@@ -56,30 +51,8 @@ final class VideoListViewModel: ObservableObject {
             }
     }
     
-//    private func loadPosts() -> AnyPublisher<[Post], Error> {
-//        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
-//        return URLSession.shared
-//            .dataTaskPublisher(for: url)
-//            .map { $0.data }
-//            .decode(type: [Post].self, decoder: JSONDecoder())
-//            .eraseToAnyPublisher()
-//    }
-    
-    
-    
     private func fetchPosts() -> AnyPublisher<LessonsServerModel, Error> {
        return networkService.fetch(LessonListRequest.lessons)
-//            .sink(
-//                receiveCompletion: { [weak self] completion in
-//                    if case let .failure(error) = completion {
-//                        self?.error = error
-//                    }
-//                },
-//                receiveValue: { [weak self] lessons in
-//                    self?.lessons = lessons
-//                }
-//            )
-//            .store(in: &cancellables)
     }
 }
 
