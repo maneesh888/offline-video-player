@@ -79,6 +79,7 @@ final class DownloadService {
     
     func downloadVideo<T:Downloadable>(asset: T) {
         
+        self.progressSubject.send((asset.assetId, 0.0, .waiting, nil))
         // create a URL from the video URL string
         guard let url = URL(string: asset.assetURL ?? "") else {
            // completionBlock(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
@@ -87,7 +88,7 @@ final class DownloadService {
         }
         
         // create a download task
-        let task = URLSession.shared.downloadTask(with: url) { (location, response, error) in
+        let task = URLSession.shared.downloadTask(with: url) { [unowned self] (location, response, error) in
             
             if let error = error {
                // completionBlock(.failure(error))
@@ -114,6 +115,10 @@ final class DownloadService {
                // completionBlock(.failure(error))
                 self.progressSubject.send((asset.assetId, 0.0, .notDownloaded,error))
             }
+            
+           
+                self.activeDownloadMap.removeValue(forKey: asset.assetId)
+            
         }
         
         // create a progress observer
@@ -128,6 +133,10 @@ final class DownloadService {
     }
     
     func cancelDownload(asset: any Downloadable) {
-        
+        if let (task, _) = activeDownloadMap[asset.assetId] {
+            task.cancel()
+            self.progressSubject.send((asset.assetId, 0.0, .notDownloaded, nil))
+            activeDownloadMap.removeValue(forKey: asset.assetId)
+        }
     }
 }

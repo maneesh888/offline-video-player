@@ -74,9 +74,9 @@ class DownloadButtonView: UIButton {
         case .paused:
             break
         case .waiting:
-            break
+            statusLaabel.text = "Wait..."
         case .downloading:
-            statusLaabel.text = "Cancel Download"
+            statusLaabel.text = "Cancel"
         case .success:
             statusLaabel.text = "Downloaded"
             statusLaabel.textColor = .green
