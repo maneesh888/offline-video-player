@@ -37,18 +37,23 @@ class VideoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.setupNavigationBarItems()
+        self.decorate()
+        self.binding()
+    }
+    
+    private func setupNavigationBarItems() {
+        
         DispatchQueue.main.async {
-            
+            self.parent?.navigationItem.largeTitleDisplayMode = .never
             self.updateDownloadButton(state: self.viewModel.downloadState)
             self.downloadProgressView.setButtonAction(self, action: #selector(self.downloadButtonTapped))
             self.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.downloadProgressView)
             self.buttonPlayNext.contentHorizontalAlignment = .right
-            self.parent?.navigationItem.largeTitleDisplayMode = .never
+            
             
         }
-        
-        self.decorate()
-        self.binding()
     }
     
     private func decorate() {
