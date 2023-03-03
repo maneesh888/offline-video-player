@@ -37,6 +37,9 @@
 		9FA3D2ED29AF3D510027B836 /* LessonPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */; };
 		9FA3D2EF29AF63E70027B836 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EE29AF63E70027B836 /* UIViewControllerExtension.swift */; };
 		9FA3D2F129AF8F470027B836 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2F029AF8F470027B836 /* DownloadService.swift */; };
+		9FB24A3F29B2737800DF8719 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB24A3E29B2737800DF8719 /* SDWebImage */; };
+		9FB24A4129B28F0500DF8719 /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB24A4029B28F0500DF8719 /* ColorUtil.swift */; };
+		9FB24A4329B2942600DF8719 /* NaviagationBarColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB24A4229B2942600DF8719 /* NaviagationBarColorModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,8 @@
 		9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewModel.swift; sourceTree = "<group>"; };
 		9FA3D2EE29AF63E70027B836 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		9FA3D2F029AF8F470027B836 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
+		9FB24A4029B28F0500DF8719 /* ColorUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtil.swift; sourceTree = "<group>"; };
+		9FB24A4229B2942600DF8719 /* NaviagationBarColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviagationBarColorModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB24A3F29B2737800DF8719 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +129,7 @@
 				9F21226729AD0390002F8F06 /* Offline Video PlayerTests */,
 				9F21227129AD0390002F8F06 /* Offline Video PlayerUITests */,
 				9F21225029AD038D002F8F06 /* Products */,
+				9FB24A3D29B2737800DF8719 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,6 +202,7 @@
 				9F21228529ADDD24002F8F06 /* Strings.swift */,
 				9FA3D2EE29AF63E70027B836 /* UIViewControllerExtension.swift */,
 				9FA3D2F029AF8F470027B836 /* DownloadService.swift */,
+				9FB24A4029B28F0500DF8719 /* ColorUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 			children = (
 				9F487DC929AE6042009F38BE /* UICircleProgressView */,
 				9F487DC329AE451E009F38BE /* DownloadButtonView.swift */,
+				9FB24A4229B2942600DF8719 /* NaviagationBarColorModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -271,6 +280,13 @@
 				9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */,
 			);
 			path = LessonPlayerView;
+			sourceTree = "<group>";
+		};
+		9FB24A3D29B2737800DF8719 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +326,9 @@
 				9F21226629AD0390002F8F06 /* PBXTargetDependency */,
 			);
 			name = "Offline Video PlayerTests";
+			packageProductDependencies = (
+				9FB24A3E29B2737800DF8719 /* SDWebImage */,
+			);
 			productName = "Offline Video PlayerTests";
 			productReference = 9F21226429AD0390002F8F06 /* Offline Video PlayerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -417,6 +436,7 @@
 				9F21229629AE00B8002F8F06 /* Lesson.swift in Sources */,
 				9F487DB829AE3796009F38BE /* ViewControllerFactory.swift in Sources */,
 				9FA3D2EF29AF63E70027B836 /* UIViewControllerExtension.swift in Sources */,
+				9FB24A4129B28F0500DF8719 /* ColorUtil.swift in Sources */,
 				9F21228E29ADE990002F8F06 /* NetworkService.swift in Sources */,
 				9F21228229AD0BC0002F8F06 /* VideoListView.swift in Sources */,
 				9FA3D2F129AF8F470027B836 /* DownloadService.swift in Sources */,
@@ -432,6 +452,7 @@
 				9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */,
 				9F487DD229AE7246009F38BE /* VideoDetailsViewModel.swift in Sources */,
 				9F21225F29AD0390002F8F06 /* Offline_Video_Player.xcdatamodeld in Sources */,
+				9FB24A4329B2942600DF8719 /* NaviagationBarColorModifier.swift in Sources */,
 				9F21225329AD038D002F8F06 /* Offline_Video_PlayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -773,6 +794,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		9F487DD429AE8D85009F38BE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		9FB24A3E29B2737800DF8719 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;

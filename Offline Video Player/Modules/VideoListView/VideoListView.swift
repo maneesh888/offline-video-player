@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VideoListView: View {
     
-    @ObservedObject private var viewModel = VideoListViewModel(networkService: URLSessionNetworkService())
+    @ObservedObject private var viewModel = VideoListViewModel(networkService: MockNetworkService())
     @State var navigate: Bool = false
     @State var selectedLesson:Lesson?{
         didSet{
@@ -18,25 +18,49 @@ struct VideoListView: View {
     }
     
     var body: some View {
+        
         NavigationView {
             if viewModel.isLoading {
                 ProgressView()
             }else{
                 ScrollView(.vertical, showsIndicators: false) {
+                    Spacer(minLength: 30)
                     LazyVStack(spacing: 20) {
                         ForEach(viewModel.lessons) { lesson in
                             
-                                HStack {
-                                    Text(lesson.name ?? "")
-                                        .font(.headline)
-                                    Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.gray)
-                                    
+                            HStack () {
+                                AsyncImage(url: URL(string: lesson.thumbnail ?? "")) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    ProgressView()
                                 }
-                                .onTapGesture {
-                                    selectedLesson = lesson
-                                }
+                                .frame(width: 110, height: 70)
+                                .cornerRadius(5.0)
+                                .padding(.trailing)
+                                .padding(.leading)
+                                
+                                
+                                Text(lesson.name ?? "")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .layoutPriority(1)
+                                    .lineLimit(3)
+                                    .frame(width: 200, height: 80, alignment: .leading)
+                                
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.blue).padding(.trailing,30)
+                                
+                            }
+                            .frame(height: 50)
+                            .onTapGesture {
+                                selectedLesson = lesson
+                            }
+                            
+                            Divider()
+                                .frame(height: 2)
+                                .background(Color(ColorUtil.dividerColor))
+                                .padding(.leading, 150)
+                            
                         }
                         
                     }
@@ -45,9 +69,13 @@ struct VideoListView: View {
                     }
                 }
                 .navigationBarTitle(Text(StringConstants.videoListTitle))
+                
+                .background(Color(ColorUtil.backgroundColor))
             }
             
         }
+        .navigationBarTitle("Title")
+        .navigationBarColor(backgroundColor: ColorUtil.backgroundColor, tintColor: .white, largeTitleColor: .white)
     }
 }
 
@@ -72,8 +100,8 @@ struct VideoDetailView: UIViewControllerRepresentable {
 }
 
 
-//struct VideoListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VideoListView()
-//    }
-//}
+struct VideoListView_Previews: PreviewProvider {
+    static var previews: some View {
+        VideoListView()
+    }
+}
