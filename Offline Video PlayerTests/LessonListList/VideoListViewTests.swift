@@ -23,6 +23,12 @@ final class LoadList: XCTestCase {
         
         viewModel.fetchLessons()
             .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    XCTFail("Loading list failed with error: \(error.localizedDescription)")
+                case .finished:
+                    break
+                }
                 semaphore.signal()
             }, receiveValue: { [unowned self] items in
                 self.lessons = items.lessons
@@ -72,5 +78,8 @@ final class LoadList: XCTestCase {
                 .store(in: &cancellables)
         }
     }
-    
+    override func tearDown() {
+        viewModel = nil
+        super.tearDown()
+    }
 }

@@ -32,7 +32,8 @@
 		9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */; };
 		9F487DD229AE7246009F38BE /* VideoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */; };
 		9F487DD529AE8D85009F38BE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F487DD429AE8D85009F38BE /* SDWebImage */; };
-		9F982DE429B34560005D5EFC /* LoadList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F982DE329B34560005D5EFC /* LoadList.swift */; };
+		9F982DE429B34560005D5EFC /* VideoListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F982DE329B34560005D5EFC /* VideoListViewTests.swift */; };
+		9F982DE729B358DA005D5EFC /* LessonDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F982DE629B358DA005D5EFC /* LessonDetailsTests.swift */; };
 		9FA3D2EA29AF3AB50027B836 /* LessonPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2E829AF3AB50027B836 /* LessonPlayerViewController.swift */; };
 		9FA3D2EB29AF3AB50027B836 /* LessonPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */; };
 		9FA3D2ED29AF3D510027B836 /* LessonPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */; };
@@ -87,7 +88,8 @@
 		9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressView.swift; sourceTree = "<group>"; };
 		9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICircleProgressButton.swift; sourceTree = "<group>"; };
 		9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailsViewModel.swift; sourceTree = "<group>"; };
-		9F982DE329B34560005D5EFC /* LoadList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadList.swift; sourceTree = "<group>"; };
+		9F982DE329B34560005D5EFC /* VideoListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewTests.swift; sourceTree = "<group>"; };
+		9F982DE629B358DA005D5EFC /* LessonDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailsTests.swift; sourceTree = "<group>"; };
 		9FA3D2E829AF3AB50027B836 /* LessonPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewController.swift; sourceTree = "<group>"; };
 		9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonPlayerViewController.xib; sourceTree = "<group>"; };
 		9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewModel.swift; sourceTree = "<group>"; };
@@ -173,7 +175,7 @@
 		9F21226729AD0390002F8F06 /* Offline Video PlayerTests */ = {
 			isa = PBXGroup;
 			children = (
-				9F982DE529B35264005D5EFC /* DownloadModule */,
+				9F982DE529B35264005D5EFC /* DetailsViewAndDownloadModule */,
 				9F982DE229B34542005D5EFC /* LessonListList */,
 				9F21226829AD0390002F8F06 /* Offline_Video_PlayerTests.swift */,
 			);
@@ -279,16 +281,17 @@
 		9F982DE229B34542005D5EFC /* LessonListList */ = {
 			isa = PBXGroup;
 			children = (
-				9F982DE329B34560005D5EFC /* LoadList.swift */,
+				9F982DE329B34560005D5EFC /* VideoListViewTests.swift */,
 			);
 			path = LessonListList;
 			sourceTree = "<group>";
 		};
-		9F982DE529B35264005D5EFC /* DownloadModule */ = {
+		9F982DE529B35264005D5EFC /* DetailsViewAndDownloadModule */ = {
 			isa = PBXGroup;
 			children = (
+				9F982DE629B358DA005D5EFC /* LessonDetailsTests.swift */,
 			);
-			path = DownloadModule;
+			path = DetailsViewAndDownloadModule;
 			sourceTree = "<group>";
 		};
 		9FA3D2E729AF3A850027B836 /* LessonPlayerView */ = {
@@ -481,7 +484,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F21226929AD0390002F8F06 /* Offline_Video_PlayerTests.swift in Sources */,
-				9F982DE429B34560005D5EFC /* LoadList.swift in Sources */,
+				9F982DE429B34560005D5EFC /* VideoListViewTests.swift in Sources */,
+				9F982DE729B358DA005D5EFC /* LessonDetailsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
