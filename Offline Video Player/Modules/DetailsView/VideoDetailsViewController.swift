@@ -34,6 +34,14 @@ class VideoDetailsViewController: UIViewController {
     private var isBuffering = true
     private var activityIndicator: UIActivityIndicatorView!
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        .portrait
+    }
+    
+    override var shouldAutorotate: Bool{
+        false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

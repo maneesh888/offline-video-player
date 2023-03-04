@@ -34,7 +34,7 @@ final class VideoListViewModel: ObservableObject {
         self.networkService = networkService
         
         self.isLoading = true
-        self.cancellable = self.fetchPosts()
+        self.cancellable = self.fetchLessons()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
@@ -52,13 +52,7 @@ final class VideoListViewModel: ObservableObject {
             }
     }
     
-    private func fetchPosts() -> AnyPublisher<LessonsServerModel, Error> {
+    func fetchLessons() -> AnyPublisher<LessonsServerModel, Error> {
        return networkService.fetch(LessonListRequest.lessons)
     }
-}
-
-struct Post: Codable, Identifiable {
-    let id: Int
-    let title: String
-    let body: String
 }
