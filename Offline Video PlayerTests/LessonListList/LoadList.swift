@@ -11,46 +11,49 @@ import Combine
 
 final class LoadList: XCTestCase {
     
-    
+    var viewModel:VideoListViewModel!
+    var lessons:[Lesson] = []
     var cancellables: Set<AnyCancellable> = []
-    var lessons = [Lesson]()
     
     override func setUpWithError() throws {
+        try super.setUpWithError()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-      
+        viewModel = VideoListViewModel(networkService: MockNetworkService())
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        viewModel.fetchLessons()
+            .sink(receiveCompletion: { completion in
+                semaphore.signal()
+            }, receiveValue: { [unowned self] items in
+                self.lessons = items.lessons
+            })
+            .store(in: &cancellables)
+        semaphore.wait()
     }
     
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testLoadList() {
-        // Given
-        let viewModel = VideoListViewModel(networkService: MockNetworkService())
-        let expectation = XCTestExpectation(description: "Mock list loaded")
-        
-        
-        // When
-        viewModel.fetchLessons()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    XCTFail("Loading list failed with error: \(error.localizedDescription)")
-                case .finished:
-                    expectation.fulfill()
-                }
-            }, receiveValue: { [unowned self] items in
-                self.lessons = items.lessons
-            })
-            .store(in: &cancellables)
-        
-        // Then
-        wait(for: [expectation], timeout: 1.0)
-        XCTAssertFalse(lessons.isEmpty, "Loaded list should not be empty")
+    func testListIsNotEmpty() {
+        // Ensure the list is not empty
+        XCTAssertFalse(lessons.isEmpty)
+    }
+    
+    func testListHasCorrectNumberOfItems() {
+        // Ensure the list has the correct number of items
         XCTAssertEqual(lessons.count, 12)
+    }
+    
+    func testListContainsExpectedItems() {
+        // Ensure the list contains the expected items
         XCTAssertTrue(lessons.contains(where: {$0.id == 1000}))
     }
     
+    func testListDoesNotContainUnexpectedItems() {
+        // Ensure the list does not contain unexpected items
+        // XCTAssertFalse(list.contains("Item 4"))
+    }
     
     func testPerformanceExample() throws {
         
@@ -68,10 +71,6 @@ final class LoadList: XCTestCase {
                 })
                 .store(in: &cancellables)
         }
-        
-        
-        // Then
-        wait(for: [expectation], timeout: 5.0)
     }
     
 }

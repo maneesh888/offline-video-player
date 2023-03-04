@@ -173,6 +173,7 @@
 		9F21226729AD0390002F8F06 /* Offline Video PlayerTests */ = {
 			isa = PBXGroup;
 			children = (
+				9F982DE529B35264005D5EFC /* DownloadModule */,
 				9F982DE229B34542005D5EFC /* LessonListList */,
 				9F21226829AD0390002F8F06 /* Offline_Video_PlayerTests.swift */,
 			);
@@ -281,6 +282,13 @@
 				9F982DE329B34560005D5EFC /* LoadList.swift */,
 			);
 			path = LessonListList;
+			sourceTree = "<group>";
+		};
+		9F982DE529B35264005D5EFC /* DownloadModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DownloadModule;
 			sourceTree = "<group>";
 		};
 		9FA3D2E729AF3A850027B836 /* LessonPlayerView */ = {
