@@ -78,7 +78,13 @@
             "video_url": "https://embed-ssl.wistia.com/deliveries/964eecde78a817fe8b67f3b5ca8f99aae17ed90e/5feu01qg6t.mp4"
         },
         {
-            "id": 1000
-        }
+            "id": 0
+        },{
+        "id": 1,
+        "name": "Dummy item for testing",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sollicitudin sed massa eu accumsan. Integer a leo sed eros lobortis cursus. Cras vel risus suscipit, condimentum mauris at, placerat dolor. Sed sit amet ornare quam, consectetur sollicitudin diam. Nunc sit amet dui tempus, dictum orci ac, elementum urna. Vestibulum nisi dui, sodales et sem vitae, ultricies ullamcorper eros. Aenean egestas condimentum scelerisque. Suspendisse quis lobortis mauris. Nullam at dui eget mi volutpat hendrerit a et neque. Nunc rhoncus nisl et arcu luctus, vitae euismod ex lobortis. Donec scelerisque sodales libero sed maximus.",
+        "thumbnail": "https://embed-ssl.wistia.com/deliveries/d21d06ba607254831b130e618d31eb2c.jpg?image_crop_resized=1000x560",
+        "video_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
+    }
     ]
 }

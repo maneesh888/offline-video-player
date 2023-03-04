@@ -48,12 +48,14 @@ final class LoadList: XCTestCase {
     
     func testListHasCorrectNumberOfItems() {
         // Ensure the list has the correct number of items
-        XCTAssertEqual(lessons.count, 12)
+        XCTAssertEqual(lessons.count, 13)
     }
     
     func testListContainsExpectedItems() {
         // Ensure the list contains the expected items
-        XCTAssertTrue(lessons.contains(where: {$0.id == 1000}))
+        XCTAssertTrue(lessons.contains(where: {$0.id == 1}))
+        XCTAssertTrue(lessons.contains(where: {$0.id == 0}))
+        XCTAssertTrue(lessons.contains(where: {$0.id == 5630}))
     }
     
     func testListDoesNotContainUnexpectedItems() {

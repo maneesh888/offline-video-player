@@ -59,15 +59,24 @@ final class VideoDetailsViewModel {
         
         switch state {
         case .notDownloaded:
-            downloadService.downloadVideo(asset: selectedLesson)
+            downloadSelectedLesson()
         case .waiting:
             break
         case .downloading:
-            downloadService.cancelDownload(asset: selectedLesson)
+            cancelDownload()
         case .downloaded:
             break
         }
     }
+    
+    func downloadSelectedLesson() {
+        downloadService.downloadVideo(asset: selectedLesson)
+    }
+    
+    func cancelDownload() {
+        downloadService.cancelDownload(asset: selectedLesson)
+    }
+    
     func getStateFor(asset:any Downloadable) -> AssetDownloadState {
         return downloadService.checkAssetDownloadStatus(asset: selectedLesson)
     }

@@ -31,13 +31,12 @@ final class LessonDetailsTests: XCTestCase {
                 
             }, receiveValue: { [unowned self] items in
                 
-                if let selected = items.lessons.first {
+                if let selected = items.lessons.last {
                     self.viewModel = VideoDetailsViewModel(lessons: items.lessons, selectedLesson: selected)
-                    semaphore.signal()
                 }else{
                     XCTFail("Selecting item form lessons failed")
                 }
-                
+                semaphore.signal()
             })
             .store(in: &cancellables)
         semaphore.wait()
@@ -47,12 +46,131 @@ final class LessonDetailsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testGetState() throws {
         // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        XCTAssertEqual(viewModel.getStateFor(asset: viewModel.selectedLesson), .notDownloaded)
+    }
+    
+    func testGetURLFunc() {
+        if viewModel.getStateFor(asset: viewModel.selectedLesson) != .downloaded {
+            XCTAssertEqual(URL(string:viewModel.selectedLesson.videoURL ?? ""), viewModel.getURLForSelected())
+        }else{
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let destinationURL = documentsURL.appendingPathComponent(String(viewModel.selectedLesson.assetId+".mp4"))
+            
+            XCTAssertEqual(destinationURL, viewModel.getURLForSelected())
+        }
+    }
+    
+    func testChooseNextLesson() {
+        if viewModel.selectedLesson.id == viewModel.lessons.last?.id {
+            // last item
+            viewModel.chooseNextLesson()
+            XCTAssertEqual(viewModel.selectedLesson.id, viewModel.lessons.last?.id)
+        }else{
+            if let currentItemId = viewModel.lessons.firstIndex(where: {$0.id == viewModel.selectedLesson.id}) {
+                viewModel.chooseNextLesson()
+                XCTAssertEqual(viewModel.selectedLesson.id, viewModel.lessons[currentItemId+1].id)
+            }else {
+                XCTFail()
+            }
+        }
+    }
+    
+    func testDownload() {
+        
+        
+        
+        // Given
+        let downloadStateChangeExpectation = XCTestExpectation(description: "Download complete")
+        let downloadCompleteExpectation = XCTestExpectation(description: "Download complete")
+        let progressExpectation = XCTestExpectation(description: "Progress update received")
+        
+        guard let dummyLesson = viewModel.lessons.last else {
+            XCTFail()
+            return
+        }
+        viewModel.selectedLesson = dummyLesson
+        
+        if viewModel.getStateFor(asset: dummyLesson) == .downloaded, let fileUrl =  viewModel.getURLForSelected(){
+            do {
+                try FileManager.default.removeItem(at: fileUrl)
+            }catch {
+                
+            }
+        }
+        
+        // Then
+        viewModel.downloadSelectedLesson()
+        self.measure {
+            viewModel.downloadProgress
+            
+                .sink { (progress, state) in
+                    print(progress, state)
+                    if state == .downloading {
+                        downloadStateChangeExpectation.fulfill()
+                    }
+                    progressExpectation.fulfill()
+                    if state == .downloaded {
+                        downloadCompleteExpectation.fulfill()
+                    }
+                    if state == .notDownloaded {
+                        XCTFail("Download failed")
+                    }
+                    
+                }
+                .store(in: &cancellables)
+        }
+        // Then
+        wait(for: [downloadCompleteExpectation], timeout: 30.0)
+        
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let destinationURL = documentsURL.appendingPathComponent(String(viewModel.selectedLesson.assetId+".mp4"))
+        XCTAssertEqual(destinationURL, self.viewModel.getURLForSelected())
+        
+        
+    }
+    
+    func testCancelDownload() {
+        
+        guard let firstItem = viewModel.lessons.first else {return}
+        viewModel.selectedLesson = firstItem
+        
+        let downloadCancelExpectation = XCTestExpectation(description: "Download Cancel")
+        let progressExpectation = XCTestExpectation(description: "Progress update received")
+        
+        if viewModel.getStateFor(asset: viewModel.selectedLesson) == .downloaded, let fileUrl =  viewModel.getURLForSelected(){
+            do {
+                try FileManager.default.removeItem(at: fileUrl)
+            }catch {
+                
+            }
+        }
+        
+        // Then
+        viewModel.downloadSelectedLesson()
+        self.measure {
+            viewModel.downloadProgress
+            
+                .sink { [weak self] (progress, state) in
+                    print(progress, state)
+                    
+                    if progress > 0.05 {
+                        progressExpectation.fulfill()
+                        self?.viewModel.cancelDownload()
+                    }
+                    
+                    if state == .notDownloaded {
+                        downloadCancelExpectation.fulfill()
+                    }
+                    
+                }
+                .store(in: &cancellables)
+        }
+        
+        wait(for: [downloadCancelExpectation], timeout: 10.0)
+        XCTAssertEqual(AssetDownloadState.notDownloaded, self.viewModel.getStateFor(asset: firstItem))
+    
     }
 
     func testPerformanceExample() throws {

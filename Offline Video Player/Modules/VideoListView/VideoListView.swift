@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VideoListView: View {
     
-    @ObservedObject private var viewModel = VideoListViewModel(networkService: MockNetworkService())
+    @ObservedObject private var viewModel = VideoListViewModel(networkService: URLSessionNetworkService())
     @State var navigate: Bool = false
     @State var selectedLesson:Lesson?{
         didSet{

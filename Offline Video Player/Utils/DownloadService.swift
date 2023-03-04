@@ -24,7 +24,7 @@ final class DownloadService {
     var progressPublisher: AnyPublisher<(String, Double, AssetDownloadState, Error?), Never> {
             return progressSubject.eraseToAnyPublisher()
         }
-    var activeDownloadMap:[ String:(URLSessionDownloadTask,NSKeyValueObservation)] = [:]
+    private var activeDownloadMap:[ String:(URLSessionDownloadTask,NSKeyValueObservation)] = [:]
 //    /// The AVAssetDownloadURLSession to use for managing AVAssetDownloadTasks.
 //    fileprivate var assetDownloadURLSession: AVAssetDownloadURLSession!
 //    /// Internal map of AVAggregateAssetDownloadTask to its corresponding Asset.
