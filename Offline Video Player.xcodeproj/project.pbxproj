@@ -22,7 +22,6 @@
 		9F21229629AE00B8002F8F06 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21229529AE00B8002F8F06 /* Lesson.swift */; };
 		9F487DB129AE1960009F38BE /* mockLessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F21228F29ADEB3A002F8F06 /* mockLessons.json */; };
 		9F487DB229AE1962009F38BE /* mockLessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F21228F29ADEB3A002F8F06 /* mockLessons.json */; };
-		9F487DB329AE1963009F38BE /* mockLessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F21228F29ADEB3A002F8F06 /* mockLessons.json */; };
 		9F487DB529AE1C2A009F38BE /* LessonListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DB429AE1C2A009F38BE /* LessonListRequest.swift */; };
 		9F487DB829AE3796009F38BE /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DB729AE3796009F38BE /* ViewControllerFactory.swift */; };
 		9F487DBB29AE3887009F38BE /* VideoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DB929AE3887009F38BE /* VideoDetailsViewController.swift */; };
@@ -31,15 +30,23 @@
 		9F487DCE29AE6042009F38BE /* UICircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCB29AE6042009F38BE /* UICircleProgressView.swift */; };
 		9F487DD029AE6042009F38BE /* UICircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DCD29AE6042009F38BE /* UICircleProgressButton.swift */; };
 		9F487DD229AE7246009F38BE /* VideoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DD129AE7246009F38BE /* VideoDetailsViewModel.swift */; };
-		9F487DD529AE8D85009F38BE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9F487DD429AE8D85009F38BE /* SDWebImage */; };
 		9F982DE429B34560005D5EFC /* VideoListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F982DE329B34560005D5EFC /* VideoListViewTests.swift */; };
 		9F982DE729B358DA005D5EFC /* LessonDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F982DE629B358DA005D5EFC /* LessonDetailsTests.swift */; };
+		9F982DEA29B3BEF8005D5EFC /* VideoListScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F982DE929B3BEF8005D5EFC /* VideoListScreenUITests.swift */; };
 		9FA3D2EA29AF3AB50027B836 /* LessonPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2E829AF3AB50027B836 /* LessonPlayerViewController.swift */; };
 		9FA3D2EB29AF3AB50027B836 /* LessonPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */; };
 		9FA3D2ED29AF3D510027B836 /* LessonPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */; };
 		9FA3D2EF29AF63E70027B836 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2EE29AF63E70027B836 /* UIViewControllerExtension.swift */; };
 		9FA3D2F129AF8F470027B836 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2F029AF8F470027B836 /* DownloadService.swift */; };
-		9FB24A3F29B2737800DF8719 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9FB24A3E29B2737800DF8719 /* SDWebImage */; };
+		9FA8C6F429B49715004F8C31 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9FA8C6F329B49715004F8C31 /* SDWebImage */; };
+		9FA8C6F629B49780004F8C31 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9FA8C6F529B49780004F8C31 /* SDWebImage */; };
+		9FA8C6F829B49785004F8C31 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9FA8C6F729B49785004F8C31 /* SDWebImage */; };
+		9FA8C6F929B49856004F8C31 /* VideoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21229229ADEFBB002F8F06 /* VideoListViewModel.swift */; };
+		9FA8C6FA29B49869004F8C31 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21229529AE00B8002F8F06 /* Lesson.swift */; };
+		9FA8C6FB29B49870004F8C31 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F21228D29ADE990002F8F06 /* NetworkService.swift */; };
+		9FA8C6FC29B498F4004F8C31 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3D2F029AF8F470027B836 /* DownloadService.swift */; };
+		9FA8C6FD29B4990E004F8C31 /* LessonListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F487DB429AE1C2A009F38BE /* LessonListRequest.swift */; };
+		9FA8C6FF29B4A385004F8C31 /* mockLessons.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F21228F29ADEB3A002F8F06 /* mockLessons.json */; };
 		9FB24A4129B28F0500DF8719 /* ColorUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB24A4029B28F0500DF8719 /* ColorUtil.swift */; };
 		9FB24A4329B2942600DF8719 /* NaviagationBarColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB24A4229B2942600DF8719 /* NaviagationBarColorModifier.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +98,7 @@
 		9F982DE329B34560005D5EFC /* VideoListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewTests.swift; sourceTree = "<group>"; };
 		9F982DE629B358DA005D5EFC /* LessonDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailsTests.swift; sourceTree = "<group>"; };
 		9F982DE829B391CF005D5EFC /* Offline-Video-Player-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Offline-Video-Player-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9F982DE929B3BEF8005D5EFC /* VideoListScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListScreenUITests.swift; sourceTree = "<group>"; };
 		9FA3D2E829AF3AB50027B836 /* LessonPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewController.swift; sourceTree = "<group>"; };
 		9FA3D2E929AF3AB50027B836 /* LessonPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonPlayerViewController.xib; sourceTree = "<group>"; };
 		9FA3D2EC29AF3D510027B836 /* LessonPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerViewModel.swift; sourceTree = "<group>"; };
@@ -105,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F487DD529AE8D85009F38BE /* SDWebImage in Frameworks */,
+				9FA8C6F429B49715004F8C31 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FB24A3F29B2737800DF8719 /* SDWebImage in Frameworks */,
+				9FA8C6F829B49785004F8C31 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA8C6F629B49780004F8C31 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +196,7 @@
 		9F21227129AD0390002F8F06 /* Offline Video PlayerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				9FA8C6FE29B4A1F9004F8C31 /* VideoList */,
 				9F21227229AD0390002F8F06 /* Offline_Video_PlayerUITests.swift */,
 				9F21227429AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift */,
 			);
@@ -306,6 +316,14 @@
 			path = LessonPlayerView;
 			sourceTree = "<group>";
 		};
+		9FA8C6FE29B4A1F9004F8C31 /* VideoList */ = {
+			isa = PBXGroup;
+			children = (
+				9F982DE929B3BEF8005D5EFC /* VideoListScreenUITests.swift */,
+			);
+			path = VideoList;
+			sourceTree = "<group>";
+		};
 		9FB24A3D29B2737800DF8719 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,7 +348,7 @@
 			);
 			name = "Offline Video Player";
 			packageProductDependencies = (
-				9F487DD429AE8D85009F38BE /* SDWebImage */,
+				9FA8C6F329B49715004F8C31 /* SDWebImage */,
 			);
 			productName = "Offline Video Player";
 			productReference = 9F21224F29AD038D002F8F06 /* Offline Video Player.app */;
@@ -351,7 +369,7 @@
 			);
 			name = "Offline Video PlayerTests";
 			packageProductDependencies = (
-				9FB24A3E29B2737800DF8719 /* SDWebImage */,
+				9FA8C6F729B49785004F8C31 /* SDWebImage */,
 			);
 			productName = "Offline Video PlayerTests";
 			productReference = 9F21226429AD0390002F8F06 /* Offline Video PlayerTests.xctest */;
@@ -371,6 +389,9 @@
 				9F21227029AD0390002F8F06 /* PBXTargetDependency */,
 			);
 			name = "Offline Video PlayerUITests";
+			packageProductDependencies = (
+				9FA8C6F529B49780004F8C31 /* SDWebImage */,
+			);
 			productName = "Offline Video PlayerUITests";
 			productReference = 9F21226E29AD0390002F8F06 /* Offline Video PlayerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -408,7 +429,7 @@
 			);
 			mainGroup = 9F21224629AD038D002F8F06;
 			packageReferences = (
-				9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				9FA8C6F229B49715004F8C31 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 9F21225029AD038D002F8F06 /* Products */;
 			projectDirPath = "";
@@ -446,7 +467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F487DB329AE1963009F38BE /* mockLessons.json in Resources */,
+				9FA8C6FF29B4A385004F8C31 /* mockLessons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +516,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA8C6FA29B49869004F8C31 /* Lesson.swift in Sources */,
+				9FA8C6FC29B498F4004F8C31 /* DownloadService.swift in Sources */,
 				9F21227329AD0390002F8F06 /* Offline_Video_PlayerUITests.swift in Sources */,
+				9FA8C6FD29B4990E004F8C31 /* LessonListRequest.swift in Sources */,
+				9F982DEA29B3BEF8005D5EFC /* VideoListScreenUITests.swift in Sources */,
+				9FA8C6F929B49856004F8C31 /* VideoListViewModel.swift in Sources */,
+				9FA8C6FB29B49870004F8C31 /* NetworkService.swift in Sources */,
 				9F21227529AD0390002F8F06 /* Offline_Video_PlayerUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,9 +735,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.Offline-Video-PlayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Offline Video Player.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Offline Video Player";
 			};
 			name = Debug;
@@ -727,9 +757,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.Offline-Video-PlayerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Offline Video Player.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Offline Video Player";
 			};
 			name = Release;
@@ -744,9 +777,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.Offline-Video-PlayerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "Offline Video Player";
 			};
 			name = Debug;
@@ -761,9 +797,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.learning.Offline-Video-PlayerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "Offline Video Player";
 			};
 			name = Release;
@@ -810,7 +849,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		9FA8C6F229B49715004F8C31 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
 			requirement = {
@@ -821,14 +860,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9F487DD429AE8D85009F38BE /* SDWebImage */ = {
+		9FA8C6F329B49715004F8C31 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = 9FA8C6F229B49715004F8C31 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
-		9FB24A3E29B2737800DF8719 /* SDWebImage */ = {
+		9FA8C6F529B49780004F8C31 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9F487DD329AE8D85009F38BE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = 9FA8C6F229B49715004F8C31 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		9FA8C6F729B49785004F8C31 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FA8C6F229B49715004F8C31 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -54,7 +54,7 @@ struct VideoListView: View {
                             .frame(height: 50)
                             .onTapGesture {
                                 selectedLesson = lesson
-                            }
+                            }.accessibilityIdentifier("com.myapp.lesson_list_screen_item_\(lesson.id)")
                             
                             Divider()
                                 .frame(height: 2)

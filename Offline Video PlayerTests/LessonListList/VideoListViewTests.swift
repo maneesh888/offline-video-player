@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import Offline_Video_Player
 
-final class LoadList: XCTestCase {
+final class VideoList: XCTestCase {
     
     var viewModel:VideoListViewModel!
     var lessons:[Lesson] = []
