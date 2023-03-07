@@ -85,7 +85,11 @@ final class VideoListScreen: XCTestCase {
             
             XCTAssertEqual(app.staticTexts["com.myapp.video_detailscreen_title"].label,firstLesson.name ?? "")
             XCTAssertEqual(app.staticTexts["com.myapp.video_detailscreen_description"].label,firstLesson.description ?? "")
-                
+               
+            XCTAssertTrue(app.buttons["com.myapp.video_detailscreen_playNextbutton"].exists)
+            
+            
+            
             let downloadButton = XCUIApplication().navigationBars.buttons["com.myapp.video_detailscreen_downloadProgressView"]
             XCTAssert(downloadButton.exists)
             
@@ -143,6 +147,42 @@ final class VideoListScreen: XCTestCase {
         
     }
     
+    func testNextItemSelect() {
+        
+        
+        
+        // Given
+        
+        if let firstLesson = self.lessons.first {
+            
+            // When
+            
+            XCUIApplication().scrollViews.otherElements.staticTexts["com.myapp.lesson_list_screen_item_\(firstLesson.id)"].tap()
+            
+            // Then
+            
+            XCTAssertTrue(app.otherElements["com.myapp.video_detailscreen_view"].waitForExistence(timeout: 3.0), "VideoDetailsViewController should be visible")
+            
+            
+            let nextButton = app.buttons["com.myapp.video_detailscreen_playNextbutton"]
+            XCTAssert(nextButton.exists)
+            
+            nextButton.tap()
+            
+            guard let firstIndex = self.lessons.firstIndex(where: {$0.id == firstLesson.id}) else { return }
+            
+            guard self.lessons.count > firstIndex else {return}
+            
+            let nextItem = self.lessons[firstIndex+1]
+            
+            XCTAssertEqual(app.staticTexts["com.myapp.video_detailscreen_title"].label,nextItem.name ?? "")
+            XCTAssertEqual(app.staticTexts["com.myapp.video_detailscreen_description"].label,nextItem.description ?? "")
+            
+            
+            
+            
+        }
+    }
     
 
 

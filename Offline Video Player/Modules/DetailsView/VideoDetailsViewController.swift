@@ -119,6 +119,7 @@ class VideoDetailsViewController: UIViewController {
         
         playButton.accessibilityIdentifier = "com.myapp.video_detailscreen_playbutton"
         containerView.accessibilityIdentifier = "com.myapp.video_detailscreen_player_container"
+        buttonPlayNext.accessibilityIdentifier = "com.myapp.video_detailscreen_playNextbutton"
         
         
     }
