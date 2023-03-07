@@ -85,6 +85,8 @@ class VideoDetailsViewController: UIViewController {
         if viewModel.userInitiatedPlayback {
             self.startPlayback()
         }
+        
+        setAccesblityIdentifiers()
     }
     
     private func binding(){
@@ -109,6 +111,17 @@ class VideoDetailsViewController: UIViewController {
             .store(in: &cancellables)
     }
     
+    private func setAccesblityIdentifiers() {
+        view.accessibilityIdentifier = "com.myapp.video_detailscreen_view"
+        labelTitle.accessibilityIdentifier = "com.myapp.video_detailscreen_title"
+        labelDescription.accessibilityIdentifier = "com.myapp.video_detailscreen_description"
+        downloadProgressView.accessibilityIdentifier = "com.myapp.video_detailscreen_downloadProgressView"
+        
+        playButton.accessibilityIdentifier = "com.myapp.video_detailscreen_playbutton"
+        containerView.accessibilityIdentifier = "com.myapp.video_detailscreen_player_container"
+        
+        
+    }
     private func updateDownloadButton(progress:Double = 0.0,state: AssetDownloadState) {
 
         switch state {
@@ -156,6 +169,7 @@ class VideoDetailsViewController: UIViewController {
         playerLayer = AVPlayerLayer(player: player)
         containerView.layer.addSublayer(playerLayer!)
        addObservers()
+       player?.accessibilityValue = "com.myapp.video_detailscreen_avplayer"
     }
     
     private func stopPlayback() {
@@ -211,6 +225,7 @@ class VideoDetailsViewController: UIViewController {
             isFullScreen = true
             let fullScreenVC = AVPlayerViewController()
             fullScreenVC.player = player
+            fullScreenVC.view.accessibilityIdentifier = "com.myapp.video_detailscreen_fullScreenPlaayer"
             present(fullScreenVC, animated: false, completion: nil)
         } else if UIDevice.current.orientation.isPortrait && isFullScreen {
             // Exit full screen mode

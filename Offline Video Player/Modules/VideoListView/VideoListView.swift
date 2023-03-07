@@ -38,6 +38,7 @@ struct VideoListView: View {
                                 .cornerRadius(5.0)
                                 .padding(.trailing)
                                 .padding(.leading)
+                                .accessibilityIdentifier("com.myapp.lesson_list_screen_item_imageView_\(lesson.id)")
                                 
                                 
                                 Text(lesson.name ?? "")
@@ -49,6 +50,8 @@ struct VideoListView: View {
                                 
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.blue).padding(.trailing,30)
+                                    .accessibilityIdentifier("com.myapp.lesson_list_screen_item_arrorw_\(lesson.id)")
+                                
                                 
                             }
                             .frame(height: 50)

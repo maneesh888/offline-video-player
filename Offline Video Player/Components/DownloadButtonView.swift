@@ -11,8 +11,8 @@ import UIKit
 
 class DownloadButtonView: UIButton {
 
-    private let progressButtonButton = UICircleProgressButton(frame: .zero)
-    private let statusLaabel = UILabel(frame: .zero)
+    private let progressButton = UICircleProgressButton(frame: .zero)
+    private let statusLabel = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,72 +26,98 @@ class DownloadButtonView: UIButton {
     }
     
     private func configureProgressView() {
-        progressButtonButton.translatesAutoresizingMaskIntoConstraints = false
+        progressButton.translatesAutoresizingMaskIntoConstraints = false
         
-        progressButtonButton.status = .canceled
-        progressButtonButton.style = .new
-        progressButtonButton.startImage = UIImage(systemName: "icloud.and.arrow.down")
-        progressButtonButton.successImage = UIImage(systemName: "checkmark.circle.fill")
-        progressButtonButton.strokeDynamic = true
-        progressButtonButton.tintColor = .systemBlue
-        progressButtonButton.colorCanceled = .systemBlue
-        progressButtonButton.isUserInteractionEnabled = false
+        progressButton.status = .canceled
+        progressButton.style = .new
+        progressButton.startImage = UIImage(systemName: "icloud.and.arrow.down")
+        progressButton.successImage = UIImage(systemName: "checkmark.circle.fill")
+        progressButton.strokeDynamic = true
+        progressButton.tintColor = .systemBlue
+        progressButton.colorCanceled = .systemBlue
+        progressButton.isUserInteractionEnabled = false
+        progressButton.accessibilityIdentifier = "com.myapp.DownloadButtonView.progressButton"
         
         
-        addSubview(progressButtonButton)
+        addSubview(progressButton)
         
         NSLayoutConstraint.activate([
-            progressButtonButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            progressButtonButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            progressButtonButton.widthAnchor.constraint(equalToConstant: 25),
-            progressButtonButton.heightAnchor.constraint(equalToConstant: 25)
+            progressButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            progressButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            progressButton.widthAnchor.constraint(equalToConstant: 25),
+            progressButton.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
     
     private func configureLabel() {
-        statusLaabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLaabel.textColor = .systemBlue
-        statusLaabel.text = "Download"
-        addSubview(statusLaabel)
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        statusLabel.textColor = .systemBlue
+        statusLabel.text = "Download"
+        statusLabel.accessibilityIdentifier = "com.myapp.DownloadButtonView.statusLabel"
+        
+        addSubview(statusLabel)
         NSLayoutConstraint.activate([
-            statusLaabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            statusLaabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            statusLaabel.leadingAnchor.constraint(equalTo: progressButtonButton.trailingAnchor, constant: 8)
+            statusLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            statusLabel.leadingAnchor.constraint(equalTo: progressButton.trailingAnchor, constant: 8)
         ])
     }
     
     func setProgress(_ progress: Float) {
-        progressButtonButton.progress = progress
+        progressButton.progress = progress
     }
     
     func setButtonEnabled(_ enabled: Bool) {
-        progressButtonButton.isEnabled = enabled
+        progressButton.isEnabled = enabled
     }
     func setStatus(_ status: UICircleProgressView.DownloadStatus) {
-        progressButtonButton.status = status
-        switch status {
-            
-        case .paused:
-            break
-        case .waiting:
-            statusLaabel.text = "Wait..."
-        case .downloading:
-            statusLaabel.text = "Cancel"
-        case .success:
-            statusLaabel.text = "Downloaded"
-            statusLaabel.textColor = .green
-            progressButtonButton.tintColor = .green
-            return
-        case .canceled:
-            statusLaabel.text = "Download"
-        }
-        statusLaabel.textColor = .systemBlue
-        progressButtonButton.tintColor = .systemBlue
+        progressButton.status = status
+        
+            statusLabel.text = status.downloadButtonText
+            statusLabel.textColor = status.downloadButtonStatusLabelColor
+            progressButton.tintColor = status.downloadButtonTintColor
+
     }
     
     func setButtonAction(_ target: Any?, action: Selector) {
         self.addTarget(target, action: action, for: .touchUpInside)
     }
     
+}
+
+extension UICircleProgressView.DownloadStatus {
+    var downloadButtonText:String {
+        switch self {
+            
+        case .paused:
+            return "Paused"
+        case .waiting:
+            return "Wait..."
+        case .downloading:
+            return "Cancel"
+        case .success:
+            return "Downloaded"
+        case .canceled:
+            return "Download"
+        }
+    }
+    
+    var downloadButtonTintColor:UIColor {
+        switch self {
+        case .success:
+            return .green
+        default:
+            return .systemBlue
+        }
+    }
+    
+    var downloadButtonStatusLabelColor: UIColor {
+        switch self {
+        case .success:
+            return .green
+        default:
+            return .systemBlue
+        }
+    }
     
 }
