@@ -68,7 +68,11 @@ struct VideoListView: View {
                         
                     }
                     if let selectedLesson = selectedLesson {
-                        NavigationLink("",destination:VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: selectedLesson)),isActive: $navigate).navigationViewStyle(StackNavigationViewStyle())
+                        
+                        let dest = VideoDetailView(viewModel: VideoDetailsViewModel(lessons: viewModel.lessons, selectedLesson: selectedLesson)).background(Color(ColorUtil.backgroundColor))
+                        
+                        NavigationLink("",destination:dest,isActive: $navigate).navigationViewStyle(StackNavigationViewStyle())
+                            
                     }
                 }
                 .navigationBarTitle(Text(StringConstants.videoListTitle))
